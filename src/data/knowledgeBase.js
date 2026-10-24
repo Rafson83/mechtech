@@ -630,6 +630,19 @@ export const CATEGORIES = [
               'PODŁĄCZANIE AKUMULATORA DO POJAZDU: kolejność odwrotna -> najpierw załóż i dokręć klemę DODATNIĄ („+”), a jako drugą załóż i dokręć klemę UJEMNĄ („-”).',
               'Zabezpiecz oczyszczone czopy i klemy wazeliną techniczną bezkwasową lub sprayem miedziowym/kontaktowym do biegunów.'
             ]
+          },
+          {
+            heading: '4. Test obciążeniowy (widełkowy / konduktancyjny) i pomiar poboru prądu spoczynkowego',
+            content:
+              'Samo napięcie spoczynkowe 12,6 V nie gwarantuje, że akumulator odda odpowiedni prąd rozruchowy. W warsztacie wykonuje się dwa dodatkowe badania diagnostyczne:',
+            table: {
+              headers: ['Badanie diagnostyczne', 'Warunki pomiaru i przyrząd', 'Wartość prawidłowa (kryterium oceny)'],
+              rows: [
+                ['Test pod obciążeniem (tester oporowy / cęgowy)', 'Obciążenie prądem równym połowie prądu rozruchowego (lub ok. 3 × C₂₀) przez 10–15 sekund', 'Napięcie na zaciskach nie może spaść poniżej 9,6 V – 10,0 V (w temp. 20°C)'],
+                ['Pomiar prądu upływu (spoczynkowego poboru prądu)', 'Multimetr (amperomierz DC) szeregowo między zdjętą klemą ujemną a czopem „-” po uśpieniu sterowników (ok. 15–30 min po zamknięciu auta)', 'Pobór prądu powinien wynosić maks. 0,02 – 0,05 A (20 – 50 mA). Wyższy pobór rozładuje akumulator w kilka dni!'],
+                ['Kodowanie akumulatora (BMS / IBS)', 'Tester diagnostyczny OBD-II po wymianie akumulatora w aucie z systemem Start-Stop (AGM/EFB)', 'Obowiązkowa rejestracja nowego akumulatora w sterowniku (reset adaptacji stopnia zużycia i korekta napięcia ładowania)']
+              ]
+            }
           }
         ],
         examTip:
@@ -663,7 +676,7 @@ export const CATEGORIES = [
         id: 'dzialanie-alternatora',
         title: 'Działanie alternatora',
         subtitle: 'Budowa alternatora trójfazowego (wirnik, stojan, mostek prostowniczy, regulator napięcia), diagnostyka napięcia ładowania i koła pasowego ze sprzęgłem.',
-        readingTime: '7 min',
+        readingTime: '9 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'alternator', 'ładowanie', 'stojan', 'wirnik', 'mostek prostowniczy', 'diody',
@@ -708,6 +721,21 @@ export const CATEGORIES = [
               'D+ (lub L): zacisk obwodu kontrolki ładowania i wstępnego wzbudzenia.',
               'DFM / FR / LIN / COM: złącze komunikacji cyfrowej lub sygnału obciążenia alternatora do sterownika silnika (ECU).'
             ]
+          },
+          {
+            heading: '4. Pomiary weryfikacyjne wymontowanego alternatora na stole warsztatowym',
+            content:
+              'Po rozebraniu alternatora na stanowisku egzaminacyjnym MOT.05 wykonuje się pomiary rezystancji uzwojeń, test diod oraz weryfikację wymiarową szczotek i pierścieni ślizgowych:',
+            table: {
+              headers: ['Badany element alternatora', 'Sposób pomiaru (ustawienie multimetru)', 'Wartości wzorcowe / kryterium weryfikacji'],
+              rows: [
+                ['Uzwojenie wzbudzenia wirnika', 'Omomierz (zakres 200 Ω) – sondy przyłożone do dwóch miedzianych pierścieni ślizgowych', 'Rezystancja: 2,2 – 4,5 Ω (OL = przerwa w uzwojeniu; poniżej 1,5 Ω = zwarcie międzyzwojowe)'],
+                ['Izolacja wirnika względem masy', 'Omomierz (zakres MΩ) – między pierścieniem ślizgowym a stalowym biegunem pazurkowym', 'Nieskończoność (OL). Jakakolwiek przejściowość oznacza przebicie uzwojenia do masy'],
+                ['Uzwojenia fazowe stojana (3 fazy)', 'Omomierz – pomiar między wyprowadzeniami poszczególnych faz oraz względem rdzenia stojana', 'Między fazami: 0,1 – 0,3 Ω (równe wartości). Względem rdzenia stalowego: nieskończoność (OL)'],
+                ['Diody mostka prostowniczego', 'Test diody (symbol →|–) – pomiar w kierunku przewodzenia i zaporowym każdej z 6 diod', 'Kierunek przewodzenia: spadek napięcia 0,45 – 0,65 V. Kierunek zaporowy: OL (brak przejścia)'],
+                ['Szczotki i pierścienie ślizgowe', 'Suwmiarka / mikrometr', 'Min. długość wystawania szczotek: ≥ 5 mm (nowe 10–12 mm). Dopuszczalne bicie pierścieni: max 0,03 mm']
+              ]
+            }
           }
         ],
         examTip:
@@ -741,7 +769,7 @@ export const CATEGORIES = [
         id: 'uklad-rozruchu-rozrusznik',
         title: 'Układ rozruchu (Rozrusznik)',
         subtitle: 'Budowa rozrusznika z przekładnią planetarną, działanie wyłącznika elektromagnetycznego, sprzęgło jednokierunkowe (bendiks) i oznaczenia zacisków 30, 50, 45.',
-        readingTime: '8 min',
+        readingTime: '10 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'rozrusznik', 'bendiks', 'elektromagnes', 'automat rozrusznika', 'komutator',
@@ -783,6 +811,20 @@ export const CATEGORIES = [
               'Rozrusznik obraca się z bardzo dużą prędkością („wyje”), ale wał korbowy silnika stoi w miejscu: uszkodzone sprzęgło jednokierunkowe (ślizgający się bendiks) lub wyłamane zęby wieńca koła zamachowego.',
               'Brak jakiejkolwiek reakcji po przekręceniu kluczyka (kontrolki nie przygasają): brak napięcia na zacisku 50 (uszkodzona kostka stacyjki, czujnik wciśnięcia sprzęgła/pozycji P-N) lub zawieszone szczotki węglowe (przez co uzwojenie wciągające elektromagnesu nie ma masy przez wirnik!).'
             ]
+          },
+          {
+            heading: '4. Pomiary spadków napięcia w obwodzie rozrusznika (pod obciążeniem)',
+            content:
+              'Najczęstszą przyczyną powolnego kręcenia rozrusznika przy sprawnym akumulatorze są nadmierne spadki napięcia na zaśniedziałych połączeniach głównych lub wypalonych stykach elektromagnesu. Pomiar wykonuje się woltomierzem podczas kręcenia rozrusznikiem:',
+            table: {
+              headers: ['Miejsce przyłożenia sond woltomierza (podczas rozruchu)', 'Badany odcinek obwodu', 'Maksymalny dopuszczalny spadek napięcia'],
+              rows: [
+                ['Sonda (+) na ołowianym słupku „+” akumulatora | Sonda (-) na śrubie zacisku 30 rozrusznika', 'Główny przewód zasilający dodatni i klema (+)', 'Maks. 0,5 V (powyżej 0,5 V = utleniona klema lub oczko przewodu na zacisku 30)'],
+                ['Sonda (+) na obudowie rozrusznika | Sonda (-) na ołowianym słupku „-” akumulatora', 'Obwód masowy (plecionka masowa silnik–nadwozie–akumulator)', 'Maks. 0,3 – 0,5 V (powyżej 0,5 V = skorodowana plecionka masowa silnika!)'],
+                ['Sonda (+) na zacisku 30 elektromagnesu | Sonda (-) na zacisku 45 (wyjście na szczotki)', 'Styki główne wewnątrz wyłącznika elektromagnetycznego', 'Maks. 0,2 – 0,3 V (powyżej 0,5 V = wypalona miedziana zwora styków elektromagnesu)'],
+                ['Pomiar cęgami prądowymi DC na przewodzie głównym rozrusznika', 'Pobór prądu rozruchu pod obciążeniem kompresją silnika', 'Silnik benzynowy (ZI): 120 – 200 A | Silnik wysokoprężny (ZS): 250 – 450 A']
+              ]
+            }
           }
         ],
         examTip:
@@ -816,7 +858,7 @@ export const CATEGORIES = [
         id: 'czujniki-i-elektronika-silnikowa',
         title: 'Czujniki i elektronika (ECU, CAN)',
         subtitle: 'Termistory NTC i PTC, przepływomierze MAF i czujniki MAP, czujniki piezoelektryczne, sondy lambda, wtryskiwacze oraz magistrala CAN-BUS i LIN.',
-        readingTime: '9 min',
+        readingTime: '11 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'elektronika', 'czujnik', 'ntc', 'ptc', 'ect', 'maf', 'map', 'piezoelektryczny',
@@ -861,6 +903,21 @@ export const CATEGORIES = [
               'Rezystancja terminacji magistrali CAN: na dwóch końcach głównej magistrali znajdują się dwa rezystory terminujące po 120 Ω połączone równolegle. Pomiar omomierzem między pinem 6 (CAN-H) a pinem 14 (CAN-L) w gnieździe OBD przy odłączonym akumulatorze musi wykazać dokładnie 60 Ω!',
               'Magistrala LIN (Local Interconnect Network): tania, jednoprzewodowa sieć podrzędna (12 V, prędkość do 20 kbps) łącząca sterownik główny (Master) z elementami wykonawczymi (Slave), np. alternatorem, silniczkami wycieraczek, czujnikiem deszczu czy klapami nawiewów.'
             ]
+          },
+          {
+            heading: '4. Tabela referencyjnych parametrów pomiarowych czujników i aktuatorów',
+            content:
+              'Zestawienie wzorcowych rezystancji i napięć sygnałowych wymaganych podczas diagnostyki stanowiskowej na egzaminie MOT.05:',
+            table: {
+              headers: ['Podzespół elektroniczny', 'Wartość rezystancji (w 20°C)', 'Napięcie zasilania / zakres sygnału'],
+              rows: [
+                ['Czujnik indukcyjny wału korbowego (CKP – 2 piny)', '450 – 1200 Ω (zależnie od producenta)', 'Brak zasilania zewnętrznego; generuje sinusoidę AC od ~1 V (rozruch) do >20 V (wysokie obroty)'],
+                ['Czujnik temperatury cieczy chłodzącej (ECT – NTC)', '2000 – 3000 Ω w 20°C | 250 – 350 Ω w 80°C', 'Układ dzielnika napięcia 5,0 V (napięcie na pinie sygnałowym spada z ~3,5 V na zimnym do ~0,6 V na gorącym)'],
+                ['Grzałka sondy lambda', '3 – 14 Ω (w temperaturze pokojowej)', 'Zasilanie 12 V sterowane sygnałem PWM ze sterownika ECU'],
+                ['Zawór regulacji ciśnienia paliwa / EGR (elektrozawór PWM)', '8 – 35 Ω', 'Zasilanie stałe +12 V (po zapłonie), wysterowanie masą PWM z ECU'],
+                ['Magistrala CAN High-Speed (piny 6 i 14 gniazda DLC)', '60 Ω (sprawna sieć) | 120 Ω (przerwa jednej gałęzi)', 'CAN-H: 2,5 V → 3,5 V | CAN-L: 2,5 V → 1,5 V (różnica w stanie dominującym = 2,0 V)']
+              ]
+            }
           }
         ],
         examTip:
@@ -955,6 +1012,19 @@ export const CATEGORIES = [
               'HEV (Full Hybrid – pełna hybryda): umożliwia ruszanie i jazdę wyłącznie na silniku elektrycznym na krótkich odcinkach; akumulator trakcyjny ładuje się wyłącznie z rekuperacji i pracy silnika spalinowego.',
               'PHEV (Plug-in Hybrid): hybryda z dużym akumulatorem trakcyjnym ładowanym z zewnętrznego gniazdka/ładowarki AC, pozwalająca przejechać 50–100 km w trybie czysto elektrycznym.'
             ]
+          },
+          {
+            heading: '4. Pomiar ciśnienia sprężania (kompresji) i próba olejowa – procedura warsztatowa',
+            content:
+              'Podstawową metodą oceny stanu technicznego grupy tłokowo-cylindrowej i szczelności zaworów bez demontażu głowicy jest pomiar ciśnienia sprężania manometrem (kompresjometrem):',
+            table: {
+              headers: ['Etap / Parametr diagnostyczny', 'Warunki prawidłowego wykonania pomiaru', 'Kryteria oceny i interpretacja wyników'],
+              rows: [
+                ['Warunki wstępne pomiaru kompresji', 'Silnik rozgrzany do temp. roboczej (min. 80°C), wykręcone WSZYSTKIE świece zapłonowe (lub żarowe), odcięty wtrysk paliwa i zapłon, przepustnica otwarta na 100% (wciśnięty pedał gazu)', 'Akumulator w pełni naładowany, aby rozrusznik obracał wałem z prędkością min. 200–250 obr./min'],
+                ['Ciśnienie nominalne i dopuszczalna różnica', 'Kręcenie rozrusznikiem przez ok. 4–5 sekund do ustabilizowania maksymalnego wskazania manometru', 'Silnik ZI: 1,0 – 1,4 MPa (10–14 bar) | Silnik ZS: 2,5 – 3,5 MPa (25–35 bar). Maksymalna różnica między cylindrami: do 10% (ok. 0,1–0,2 MPa)'],
+                ['Próba olejowa (gdy ciśnienie jest za niskie)', 'Wstrzyknięcie do cylindra ok. 5 cm³ czystego oleju silnikowego (uszczelniającego styk tłok–pierścienie–gładź) i powtórzenie pomiaru', 'Jeśli ciśnienie WZROŚNIE: zużyte pierścienie tłokowe lub gładź cylindra. Jeśli ciśnienie NIE WZROŚNIE: nieszczelne zawory (wypalone gniazdo) lub uszkodzona uszczelka pod głowicą (UPG)!']
+              ]
+            }
           }
         ],
         examTip:
@@ -988,7 +1058,7 @@ export const CATEGORIES = [
         id: 'rodzaje-korbowodow-i-uklad-korbowy',
         title: 'Rodzaje korbowodów i układ korbowo-tłokowy',
         subtitle: 'Budowa korbowodu (główka, trzon, stopa), podział prosty, ukośny i łamany kruszeniowo (fracture-split), korbowody silników widlastych, panewki i sworznie.',
-        readingTime: '9 min',
+        readingTime: '11 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'korbowód', 'stopa korbowodu', 'główka korbowodu', 'korbowód łamany', 'podział ukośny',
@@ -1031,6 +1101,22 @@ export const CATEGORIES = [
               'Sworzeń zaciskowy (stały w główce korbowodu): osadzony w główce korbowodu z pasowaniem ciasnym (wciskowym – montaż po podgrzaniu główki do ok. 250–300°C), a w piastach tłoka obraca się z luzem (nie wymaga pierścieni Segera!).',
               'Panewki korbowodowe i „zamki”: tzw. zamki (wypusty) w półpanewkach służą wyłącznie do USTALENIA POŁOŻENIA osiowego i obwodowego podczas montażu (zamek do zamka!). Przed obróceniem się panewki w stopie podczas pracy silnika chroni wyłącznie ZACISK MONTAŻOWY (odpowiedni moment i kąt dokręcenia śrub stopy korbowodu)!'
             ]
+          },
+          {
+            heading: '4. Pomiary metrologiczne i tolerancje układu korbowo-tłokowego (Weryfikacja MOT.05)',
+            content:
+              'Podczas naprawy głównej silnika na egzaminie zawodowym wykonuje się precyzyjne pomiary mikrometryczne gładzi cylindrów, tłoków, pierścieni oraz czopów wału korbowego:',
+            table: {
+              headers: ['Weryfikowany parametr', 'Przyrząd i miejsce pomiaru', 'Typowa wartość nominalna / graniczna'],
+              rows: [
+                ['Owalizacja i stożkowatość tulei cylindra', 'Średnicówka czujnikowa w 3 poziomach wysokości (góra, środek, dół) i w 2 płaszczyznach (wzdłuż i w poprzek osi wału)', 'Dopuszczalna owalizacja i stożkowatość: maks. 0,03 – 0,05 mm (powyżej -> szlif na wymiar nadwymiarowy +0,25 / +0,50 mm)'],
+                ['Średnica płaszcza tłoka i luz montażowy', 'Mikrometr zewnętrzny – pomiar prostopadle do osi sworznia tłokowego ok. 10–15 mm od dolnej krawędzi płaszcza', 'Luz montażowy tłoka w cylindrze: 0,025 – 0,060 mm (zależnie od średnicy i typu silnika ZI/ZS)'],
+                ['Luz w zamku pierścienia tłokowego', 'Szczelinomierz listkowy po włożeniu samego pierścienia do cylindra na głębokość ok. 15–20 mm od dołu', 'Nowy pierścień: 0,20 – 0,45 mm | Granica zużycia: 0,80 – 1,00 mm. Przy montażu zamki 3 pierścieni przestawić co 120°!'],
+                ['Luz osiowy pierścienia w rowku tłoka', 'Szczelinomierz listkowy wsuwany między boczną powierzchnię pierścienia a ściankę rowka tłoka', 'Nowy: 0,03 – 0,07 mm | Graniczne wybicie rowka tłoka: 0,12 – 0,15 mm'],
+                ['Luz olejowy czop–panewka (Plastigage)', 'Kalibrowana nitka plastyczna Plastigage zgnieciona przez dokręconą stopę korbowodu (bez obracania wałem!)', 'Luz olejowy: 0,025 – 0,065 mm (odczyt szerokości rozpłaszczonego paska na skali wzorcowej)'],
+                ['Luz poosiowy (wzdłużny) wału korbowego', 'Czujnik zegarowy w statywie magnetycznym przystawiony do czoła wału (regulowany półpierścieniami oporowymi)', 'Wartość nominalna: 0,07 – 0,18 mm (granica zużycia półpierścieni: 0,25 – 0,30 mm)']
+              ]
+            }
           }
         ],
         examTip:
@@ -1064,7 +1150,7 @@ export const CATEGORIES = [
         id: 'uklad-rozrzadu',
         title: 'Układ rozrządu',
         subtitle: 'Zadania układu rozrządu, typy OHV, OHC i DOHC, napęd paskiem zębatym i łańcuchem, luz zaworowy oraz zmienne fazy rozrządu (VVT).',
-        readingTime: '8 min',
+        readingTime: '10 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'rozrząd', 'wałek rozrządu', 'zawór', 'popychacz', 'pasek rozrządu', 'łańcuch',
@@ -1107,6 +1193,20 @@ export const CATEGORIES = [
               'Po zamontowaniu nowego paska i ustawieniu napięcia napinacza wykonaj RĘCZNIE kluczem pełne 2 obroty wału korbowego zgodnie z kierunkiem pracy silnika i ponownie skontroluj pokrywanie się znaków.',
               'Nigdy nie zginaj nowego paska pod ostrym kątem (ryzyko pęknięcia kordu z włókna szklanego) i chroń go przed kontaktem z olejem lub płynem chłodniczym.'
             ]
+          },
+          {
+            heading: '4. Weryfikacja głowicy, zaworów, wałka rozrządu i kolejność dokręcania głowicy',
+            content:
+              'Podczas naprawy głowicy oraz układu rozrządu mechanik weryfikuje następujące parametry geometryczne i montażowe:',
+            table: {
+              headers: ['Czynność weryfikacyjna / montażowa', 'Narzędzie pomiarowe', 'Parametry techniczne i zasady'],
+              rows: [
+                ['Pomiar płaskości (wichrowatości) dolnej płaszczyzny głowicy', 'Liniał krawędziowy precyzyjny + szczelinomierz listkowy (pomiar wzdłużny i po przekątnych)', 'Maksymalna dopuszczalna odchyłka płaskości: 0,05 mm (powyżej -> planowanie głowicy na szlifierce)'],
+                ['Kolejność dokręcania i odkręcania śrub głowicy', 'Klucz dynamometryczny + kątomierz (nowe śruby plastyczne TTY!)', 'DOKRĘCANIE: spiralnie / na krzyż OD ŚRODKA na zewnątrz. ODKRĘCANIE: odwrotnie – OD ZEWNĄTRZ do środka!'],
+                ['Wznios krzywek i bicie wałka rozrządu', 'Mikrometr zewnętrzny (wysokość H minus średnica podstawy D) oraz czujnik zegarowy w pryzmach', 'Dopuszczalne bicie środkowego czopa wałka rozrządu: maks. 0,02 – 0,03 mm'],
+                ['Regulacja zaworów podkładkami / szklankami', 'Mikrometr + szczelinomierz listkowy', 'Wzór na nową grubość płytki: N = S + (L_zmierzony - L_nominalny), gdzie S to grubość starej płytki']
+              ]
+            }
           }
         ],
         examTip:
@@ -1140,7 +1240,7 @@ export const CATEGORIES = [
         id: 'uklad-chlodzenia',
         title: 'Układ chłodzenia silnika',
         subtitle: 'Mały i duży obieg cieczy chłodzącej, budowa termostatu, pompa cieczy, korek ciśnieniowy zbiorniczka, płyny G11/G12/G13 oraz badanie refraktometrem.',
-        readingTime: '8 min',
+        readingTime: '10 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'układ chłodzenia', 'termostat', 'mały obieg', 'duży obieg', 'chłodnica', 'nagrzewnica',
@@ -1181,6 +1281,20 @@ export const CATEGORIES = [
               'Próba szczelności układu chłodzenia: na zimnym silniku nakręć na zbiorniczek wyrównawczy adapter ręcznej pompki ciśnieniowej z manometrem, wytwórz nadciśnienie ok. 1,2 – 1,4 bar i obserwuj przez 10 minut, czy ciśnienie nie spada oraz czy na króćcach i pompie cieczy nie pojawia się wyciek.',
               'Test na obecność spalin (CO₂) w układzie chłodzenia (weryfikacja uszkodzenia uszczelki pod głowicą – UPG): nałóż rurkę fermentacyjną z niebieskim płynem reakcyjnym na zbiorniczek wyrównawczy. Zmiana barwy płynu z niebieskiej na zieloną/żółtą oznacza przedostawanie się spalin do płaszcza wodnego!'
             ]
+          },
+          {
+            heading: '4. Klasyfikacja płynów chłodniczych i badanie termostatu po wymontowaniu',
+            content:
+              'Dobór płynu chłodniczego oraz weryfikacja wymontowanego termostatu w kąpieli wodnej z termometrem:',
+            table: {
+              headers: ['Specyfikacja / Badanie', 'Technologia inhibitorów korozji', 'Właściwości i parametry kontrolne'],
+              rows: [
+                ['G11 (IAT – Inorganic Acid Technology)', 'Krzemiany nieorganiczne (zwykle kolor niebieski lub zielony)', 'Tworzy warstwę ochronną w całym układzie; wymaga wymiany co 2–3 lata'],
+                ['G12 / G12+ (OAT – Organic Acid Technology)', 'Kwasy organiczne bezkrzemianowe (kolor różowy / czerwony)', 'Działa miejscowo w ogniskach korozji, chroni chłodnice aluminiowe; trwałość do 5 lat'],
+                ['G12++ / G13 (LOBRID)', 'Technologia hybrydowa (kwasy organiczne + dodatek krzemianów na bazie glikolu lub gliceryny)', 'Kolor fioletowy/liliowy; bardzo wysoka ochrona stopów aluminium i żeliwa'],
+                ['Badanie wymontowanego termostatu', 'Zanurzenie w naczyniu z podgrzewaną wodą i termometrem laboratoryjnym', 'Początek otwarcia: zgodnie z cechą na korpusie (np. 87°C ± 2°C). Pełny skok zaworu: min. 7–8 mm przy temp. ok. 100–102°C']
+              ]
+            }
           }
         ],
         examTip:
@@ -1214,7 +1328,7 @@ export const CATEGORIES = [
         id: 'uklad-klimatyzacji',
         title: 'Układ klimatyzacji i wentylacji',
         subtitle: 'Obieg termodynamiczny klimatyzacji (sprężarka, skraplacz, zawór rozprężny, parownik), czynniki R134a i R1234yf, oleje PAG/POE oraz diagnostyka ciśnień LP/HP.',
-        readingTime: '9 min',
+        readingTime: '11 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'klimatyzacja', 'sprężarka', 'kompresor', 'skraplacz', 'parownik', 'zawór rozprężny',
@@ -1261,6 +1375,21 @@ export const CATEGORIES = [
               'Dozowanie świeżego oleju (tyle mililitrów, ile odseparowano + ewentualny dodatek przy wymianie podzespołu) oraz barwnika kontrastowego UV.',
               'Napełnienie czynnikiem chłodniczym ściśle według MASY [g] podanej na tabliczce znamionowej pod maską oraz wymiana filtra kabinowego i dezynfekcja parownika (ozonowaniem lub metodą ultradźwiękową).'
             ]
+          },
+          {
+            heading: '4. Diagnostyka usterek klimatyzacji na podstawie manometrów LP i HP',
+            content:
+              'Wskazania manometru niskiego ciśnienia (LP – niebieski) oraz wysokiego ciśnienia (HP – czerwony) przy pracującym silniku (ok. 1500–2000 obr./min) i temp. otoczenia ~22°C pozwalają bezbłędnie wskazać usterkę:',
+            table: {
+              headers: ['Wskazanie LP (niskie)', 'Wskazanie HP (wysokie)', 'Diagnoza usterki w układzie klimatyzacji'],
+              rows: [
+                ['1,5 – 2,5 bar (Norma)', '11 – 16 bar (Norma)', 'Układ całkowicie sprawny. Temperatura powietrza u wylotu z kratki środkowej powinna wynosić ok. 4°C – 8°C'],
+                ['Zbyt niskie (< 1,0 bar)', 'Zbyt niskie (< 7–8 bar)', 'Zbyt mała ilość czynnika chłodniczego w układzie (wyciek/nieszczelność) – słaba wydajność chłodzenia'],
+                ['Zbyt wysokie (> 3,5 bar)', 'Zbyt niskie (< 7 bar) lub równe LP', 'Uszkodzona sprężarka klimatyzacji (brak sprężania / uszkodzony zawór sterujący PWM w kompresorze)'],
+                ['Normalne lub wysokie', 'Bardzo wysokie (> 22–25 bar)', 'Brak chłodzenia skraplacza (niedziałający wentylator chłodnicy, zabite błotem lamele skraplacza) lub przepełniony układ'],
+                ['Podciśnienie (< 0 bar)', 'Niskie lub normalne', 'Niedrożność (przytkany filtr-osuszacz lub zamarznięty / zablokowany w pozycji zamkniętej zawór rozprężny TXV)']
+              ]
+            }
           }
         ],
         examTip:
@@ -1294,7 +1423,7 @@ export const CATEGORIES = [
         id: 'budowa-zawieszenia',
         title: 'Układy zawieszenia',
         subtitle: 'Podział na zawieszenia zależne, półzależne (belka skrętna) i niezależne (MacPherson, wielowahaczowe Multi-Link), pneumatyczne oraz zasady napraw.',
-        readingTime: '9 min',
+        readingTime: '11 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'zawieszenie', 'zależne', 'półzależne', 'niezależne', 'belka skrętna', 'wielowahaczowe',
@@ -1338,6 +1467,20 @@ export const CATEGORIES = [
               'DOKRĘCANIE TULEI METALOWO-GUMOWYCH (SILENTBLOCKÓW): śruby przechodzące przez tuleje metalowo-gumowe wahaczy oraz tylnej belki dokręcamy momentem znamionowym DOPIERO PO OPUSZCZENIU POJAZDU NA KOŁA (w położeniu odpowiadającym normalnemu obciążeniu statycznemu). Dokręcenie tulei na wiszących kołach powoduje trwałe skręcenie i szybkie zerwanie gumy!',
               'Po każdej wymianie elementów wodzących (wahacza, sworznia, kolumny amortyzatora) lub rozpięciu drążków kierowniczych należy obowiązkowo skontrolować i wyregulować geometrię kół jezdnych.'
             ]
+          },
+          {
+            heading: '4. Diagnostyka luzów zawieszenia i tłumienia amortyzatorów (SKP / Warsztat)',
+            content:
+              'Sposób wykrywania zużycia poszczególnych elementów zawieszenia podczas przeglądu przed regulacją geometrii:',
+            table: {
+              headers: ['Element zawieszenia', 'Objaw zużycia podczas jazdy i na podnośniku', 'Kryterium weryfikacji i naprawy'],
+              rows: [
+                ['Sworzeń kulowy wahacza (zwrotnicy)', 'Głuche stuki na nierównościach, wyczuwalny luz promieniowy/osiowy przy szarpaniu kołem w płaszczyźnie pionowej (godz. 12–6) lub łyżką montażową', 'Niedopuszczalny jakikolwiek wyczuwalny luz lub pęknięta osłona gumowa przeciwpyłowa'],
+                ['Końcówka i drążek kierowniczy', 'Luz wyczuwalny przy poruszaniu kołem w płaszczyźnie poziomej (godz. 9–3), nieprecyzyjne prowadzenie', 'Natychmiastowa wymiana + obowiązkowe ustawienie zbieżności kół przednich'],
+                ['Górne łożysko oporowe kolumny MacPhersona', 'Metaliczne przeskakiwanie („brzdękanie” sprężyny) podczas kręcenia kierownicą na postoju', 'Wymiana górnego mocowania wraz z łożyskiem przy użyciu ściągacza do sprężyn'],
+                ['Amortyzatory teleskopowe (badanie metodą Eusama)', 'Wycieki oleju na korpusie, podskakiwanie koła, ząbkowanie bieżnika opon, wydłużona droga hamowania', 'Wskaźnik przylegania koła Eusama: >60% bardzo dobry, 40–60% dobry, <20–30% zużyty. Maks. różnica na jednej osi: 15%']
+              ]
+            }
           }
         ],
         examTip:
@@ -1371,7 +1514,7 @@ export const CATEGORIES = [
         id: 'uklad-hamulcowy',
         title: 'Układy hamulcowe i systemy ABS/ESP',
         subtitle: 'Rodzaje hamulców (tarczowe ze stałym i pływającym zaciskiem, bębnowe Simplex/Duplex), układy dwuobwodowe X i TT, serwo, płyny DOT i systemy ABS/ASR/ESP.',
-        readingTime: '10 min',
+        readingTime: '12 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'hamulce', 'tarcza hamulcowa', 'klocki', 'zacisk pływający', 'zacisk stały', 'bębnowy',
@@ -1419,6 +1562,21 @@ export const CATEGORIES = [
               'Cofanie tłoczków tylnych zacisków: w zaciskach z mechanicznym hamulcem ręcznym tłoczek cofamy JEDNOCZEŚNIE GO WKRĘCAJĄC praską śrubową. W zaciskach z elektrycznym hamulcem postojowym (EPB – silniczki elektryczne na zaciskach) przed demontażem wprowadzamy układ w „Tryb serwisowy wymiany klocków” za pomocą testera diagnostycznego OBD.',
               'Odpowietrzanie układu hamulcowego: metodą klasyczną zaczynamy od koła NAJDALEJ położonego od pompy hamulcowej (PT -> LT -> PP -> LP). W przypadku zapowietrzenia agregatu hydraulicznego ABS/ESP konieczne jest uruchomienie procedury odpowietrzania pompy ABS testerem diagnostycznym.'
             ]
+          },
+          {
+            heading: '4. Tolerancje wymiarowe i wymagania montażowe układu hamulcowego (Tabela MOT.05)',
+            content:
+              'Zestawienie granicznych wartości zużycia i zasad smarowania podczas montażu hamulców tarczowych i bębnowych:',
+            table: {
+              headers: ['Mierzony parametr / Czynność', 'Przyrząd pomiarowy / Środek chemiczny', 'Wartość graniczna / Zasada technologiczna'],
+              rows: [
+                ['Grubość tarczy hamulcowej (Min. TH)', 'Mikrometr zewnętrzny kabłąkowy (pomiar w min. 3–4 punktach na obwodzie z pominięciem rantu)', 'Zwykle o 2,0 – 3,0 mm mniej niż nowa tarcza (np. nowa 25,0 mm -> Min TH = 22,0 mm wybite na obrzeżu tarczy)'],
+                ['Bicie osiowe (boczne) tarczy i piasty koła', 'Czujnik zegarowy w statywie magnetycznym ok. 5–10 mm od zewnętrznej krawędzi tarczy', 'Bicie tarczy: maks. 0,05 mm | Bicie samej piasty koła: maks. 0,02 mm. Piastę oczyszczamy na sucho (zakaz smarowania piasty pod tarczą!)'],
+                ['Średnica wewnętrzna bębna hamulcowego (Max. Dia)', 'Suwmiarka do bębnów lub średnicówka mikrometryczna', 'Dopuszczalne powiększenie średnicy bębna: maks. +1,0 do +1,5 mm względem wymiaru nominalnego'],
+                ['Dobór smarów do zacisku pływającego', 'Smar silikonowy/syntetyczny (np. ATE Plastilube / pasta do tłoczków)', 'Sworznie prowadzące w gumach smarujemy WYŁĄCZNIE smarem syntetycznym/silikonowym (smar miedziowy niszczy gumki i zakłóca czujniki ABS!)'],
+                ['Dopuszczalna różnica sił hamowania na jednej osi', 'Urządzenie rolkowe na Stacji Kontroli Pojazdów (SKP)', 'Różnica sił hamowania kół tej samej osi (lewe vs prawe) nie może przekraczać 30% (w odniesieniu do koła o większej sile)']
+              ]
+            }
           }
         ],
         examTip:

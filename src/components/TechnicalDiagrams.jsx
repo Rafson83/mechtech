@@ -1,48 +1,391 @@
 import React, { useState } from 'react';
-import { Layers, Eye, Info, CheckCircle2 } from 'lucide-react';
+import { Layers, Maximize2, X, Image as ImageIcon } from 'lucide-react';
 
-/**
- * Renders interactive CAD/Service-Manual style SVG technical schematics and assembly drawings ("montażówki")
- * tailored to specific MOT.05 topics.
- */
-export default function TechnicalDiagram({ topicId }) {
-  switch (topicId) {
-    case 'bezpieczenstwo-w-warsztacie':
-    case 'postepowanie-z-odpadami':
-    case 'ppoz':
-      return <BhpLiftAndSafetyDiagram />;
-    case 'rodzaje-silnikow':
-      return <EngineConfigsDiagram />;
-    case 'rodzaje-korbowodow-i-uklad-korbowy':
-      return <CrankAssemblyDiagram />;
-    case 'uklad-rozrzadu':
-      return <TimingBeltDiagram />;
-    case 'uklad-chlodzenia':
-      return <CoolingCircuitDiagram />;
-    case 'uklad-klimatyzacji':
-      return <AcCircuitDiagram />;
-    case 'budowa-zawieszenia':
-      return <SuspensionAssemblyDiagram />;
-    case 'uklad-hamulcowy':
-      return <BrakeAssemblyDiagram />;
-    case 'prawo-ohma':
-    case 'uklad-rozruchu-rozrusznik':
-    case 'dzialanie-alternatora':
-    case 'budowa-akumulatora':
-      return <StarterAlternatorWiringDiagram />;
-    case 'obsluga-oscyloskopu':
-    case 'czujniki-i-elektronika-silnikowa':
-    case 'odczyt-kodow-bledow-obd':
-      return <OscilloscopeAndObdDiagram defaultTab={topicId === 'odczyt-kodow-bledow-obd' ? 'obd' : 'scope'} />;
-    case 'geometria-kol':
-      return <WheelAlignmentDiagram />;
-    case 'rodzaje-gwintow':
-    case 'tolerancje-i-pasowania':
-    case 'rysunek-techniczny':
-      return <PkmTechnicalDrawingDiagram defaultTab={topicId === 'tolerancje-i-pasowania' ? 'fits' : 'thread'} />;
-    default:
-      return null;
+const TOPIC_ILLUSTRATIONS = {
+  'bezpieczenstwo-w-warsztacie': {
+    src: '/illustrations/bhp-workshop.jpg',
+    title: 'Rycina 1.1. Organizacja bezpiecznego stanowiska obsługowo-naprawczego z podnośnikiem dwukolumnowym',
+    caption: 'Pojazd uniesiony na łapach w fabrycznych punktach progowych, podłączony miejscowy wyciąg spalin, gaśnica śniegowa CO₂ oraz środki ochrony indywidualnej (ŚOI).',
+    callouts: [
+      'Łapy podnośnika w punktach fabrycznych (próba stateczności na wys. 15–20 cm)',
+      'Wąż miejscowego wyciągu spalin założony na rurę wydechową',
+      'Gaśnica śniegowa CO₂ (do urządzeń elektrycznych do 1000 V)',
+      'Okulary ochronne i rękawice robocze nitrylowo-mechaniczne'
+    ]
+  },
+  'postepowanie-z-odpadami': {
+    src: '/illustrations/bhp-workshop.jpg',
+    title: 'Rycina 1.2. Stanowisko serwisowe spełniające wymogi ochrony środowiska i gospodarki odpadami BDO',
+    caption: 'Hermetyzacja procesów obsługowych – odciąg spalin, szczelna posadzka olejoodporna oraz selektywna zbiórka płynów eksploatacyjnych.',
+    callouts: [
+      'Kod 13 02 05* / 13 02 08* – przepracowane oleje silnikowe i przekładniowe',
+      'Kod 16 01 07* – zużyte filtry olejowe (pojemnik z kratką ociekową)',
+      'Kod 16 01 13* – higroskopijny płyn hamulcowy (osobny kanister)',
+      'Kod 15 02 02* – zużyty sorbent mineralny i czyściwo zaolejone'
+    ]
+  },
+  ppoz: {
+    src: '/illustrations/bhp-workshop.jpg',
+    title: 'Rycina 1.3. Zabezpieczenie przeciwpożarowe hali warsztatowej i stref zagrożenia wybuchem',
+    caption: 'Rozmieszczenie podręcznego sprzętu gaśniczego (gaśnica śniegowa CO₂ oraz proszkowa ABC) przy stanowisku podnośnikowym.',
+    callouts: [
+      'Gaśnica śniegowa (CO₂) – gasi elektronikę i szafy sterownicze bez osadów',
+      'Gaśnica proszkowa ABC – gasi ciała stałe (A), ciecze palne (B) i gazy (C)',
+      'Wentylacja wywiewna odprowadzająca opary paliw i wodór z akumulatorów',
+      'Wolna droga ewakuacyjna wokół kolumn podnośnika'
+    ]
+  },
+  'rodzaje-gwintow': {
+    src: '/illustrations/pkm-metrology.jpg',
+    title: 'Rycina 2.1. Połączenia śrubowe metryczne, grzebień wzorcowy do gwintów oraz przyrządy pomiarowe PKM',
+    caption: 'Weryfikacja skoku gwintu P wzornikiem grzebieniowym (np. 1,0 / 1,25 / 1,5 mm) oraz pomiar średnicy zewnętrznej d suwmiarką i mikrometrem.',
+    callouts: [
+      'Śruby sześciokątne o klasie wytrzymałości 8.8 / 10.9 z gwintem metrycznym ISO',
+      'Wzornik (grzebień) do pomiaru skoku gwintu P [mm]',
+      'Suwmiarka uniwersalna (pomiar średnicy rdzenia pod otwór d_w = d - P)',
+      'Mikrometr zewnętrzny 0–25 mm o dokładności 0,01 mm'
+    ]
+  },
+  'tolerancje-i-pasowania': {
+    src: '/illustrations/pkm-metrology.jpg',
+    title: 'Rycina 2.2. Przyrządy metrologii warsztatowej do kontroli tolerancji wymiaru i odchyłek kształtu',
+    caption: 'Zestaw pomiarowy mechanika: mikrometr zewnętrzny (0,01 mm), czujnik zegarowy na statywie magnetycznym oraz suwmiarka noniuszowa.',
+    callouts: [
+      'Mikrometr zewnętrzny ze sprzęgiełkiem ciernym (pomiar czopów wału w 20°C)',
+      'Czujnik zegarowy na statywie magnetycznym (pomiar bicia i luzu poosiowego)',
+      'Suwmiarka ze śrubą zaciskową i głębokościomierzem',
+      'Wzorce skoku i klasy pasowań części współpracujących'
+    ]
+  },
+  'rysunek-techniczny': {
+    src: '/illustrations/pkm-metrology.jpg',
+    title: 'Rycina 2.3. Dokumentacja wykonawcza CAD a rzeczywiste części maszynowe i narzędzia kontrolne',
+    caption: 'Odczytywanie wymiarów nominalnych, tolerancji i chropowatości powierzchni z rysunku technicznego na stanowisku weryfikacji części.',
+    callouts: [
+      'Rzutowanie prostokątne europejskie (metoda E) w tle dokumentacji',
+      'Weryfikacja wymiarów wykonawczych wałków i gwintów mikrometrem',
+      'Kontrola odchyłek bicia osiowego i promieniowego czujnikiem zegarowym',
+      'Identyfikacja zarysu gwintu (linia gruba na wierzchołkach, cienka w dnie wrębu)'
+    ]
+  },
+  'prawo-ohma': {
+    src: '/illustrations/diagnostics-oscilloscope.jpg',
+    title: 'Rycina 3.1. Stanowisko pomiarów wielkości elektrycznych (U, I, R) multimetrem cyfrowym i oscyloskopem',
+    caption: 'Praktyczna weryfikacja Prawa Ohma (I = U / R) – pomiar napięcia zasilania, spadków napięć na masie oraz rezystancji obwodów wykonawczych.',
+    callouts: [
+      'Multimetr cyfrowy z sondami pomiarowymi (pomiar V DC, A DC oraz Ω)',
+      'Sterownik silnika (ECU) ze złączem wielopinowym',
+      'Złącze diagnostyczne OBD-II (zasilanie na pinie 16, masa na pinach 4 i 5)',
+      'Oscyloskop dwukanałowy rejestrujący przebiegi napięciowe w czasie'
+    ]
+  },
+  'budowa-akumulatora': {
+    src: '/illustrations/starter-alternator.jpg',
+    title: 'Rycina 3.2. Główne maszyny elektryczne współpracujące z akumulatorem 12 V: Alternator i Rozrusznik',
+    caption: 'Bilans energetyczny pojazdu: rozrusznik pobiera z akumulatora prąd 150–400 A podczas rozruchu, a alternator zwraca ładunek przy napięciu 13,8–14,5 V.',
+    callouts: [
+      'Alternator trójfazowy z kołem pasowym wielorowkowym (ładowanie akumulatora)',
+      'Rozrusznik z wyłącznikiem elektromagnetycznym (główny odbiornik prądu rozruchu)',
+      'Zacisk prądowy główny 30 / B+ połączony bezpośrednio z dodatnią klemą akumulatora',
+      'Obudowy aluminiowe stanowiące połączenie masowe (zacisk 31 / B-) z kadłubem'
+    ]
+  },
+  'dzialanie-alternatora': {
+    src: '/illustrations/starter-alternator.jpg',
+    title: 'Rycina 3.3. Przekrój konstrukcyjny alternatora trójfazowego (po lewej) oraz rozrusznika (po prawej)',
+    caption: 'Widoczne uzwojenia fazowe stojana, wirnik z biegunami pazurkowymi, łożyska toczne, układ prostowniczy oraz koło pasowe wielorowkowe PK.',
+    callouts: [
+      'Koło pasowe wielorowkowe (często ze sprzęgłem jednokierunkowym OAP)',
+      'Miedziane uzwojenia trójfazowe stojana osadzone w pakiecie blach stalowych',
+      'Wirnik z biegunami pazurkowymi (twornik pola magnetycznego)',
+      'Mostek prostowniczy i szczotkotrzymacz z regulatorem napięcia w tylnej tarczy'
+    ]
+  },
+  'uklad-rozruchu-rozrusznik': {
+    src: '/illustrations/starter-alternator.jpg',
+    title: 'Rycina 3.4. Przekrój rozrusznika z przekładnią planetarną i wyłącznikiem elektromagnetycznym (po prawej)',
+    caption: 'Budowa wewnętrzna nowoczesnego rozrusznika z reduktorem planetarnym: elektromagnes, dźwignia widełek, wirnik z komutatorem i zębnik bendiksu.',
+    callouts: [
+      'Wyłącznik elektromagnetyczny (automat) z uzwojeniem wciągającym i podtrzymującym',
+      'Wirnik prądu stałego z komutatorem wycinkowym i szczotkami miedziano-grafitowymi',
+      'Przekładnia planetarna (reduktor zwiększający moment obrotowy ~4-krotnie)',
+      'Zębnik ze sprzęgłem jednokierunkowym (bendiksem) przesuwany dźwignią widełkową'
+    ]
+  },
+  'czujniki-i-elektronika-silnikowa': {
+    src: '/illustrations/diagnostics-oscilloscope.jpg',
+    title: 'Rycina 3.5. Diagnostyka elektronicznego systemu sterowania silnikiem (ECU), czujników i magistrali CAN',
+    caption: 'Pomiar sygnałów analogowych (czujnik indukcyjny – pomarańczowa sinusoida) i cyfrowych (czujnik Halla / PWM – błękitny przebieg prostokątny).',
+    callouts: [
+      'Ekran oscyloskopu: nałożenie sygnału czujnika indukcyjnego (AC) i czujnika Halla (0–5 V)',
+      'Sterownik mikroprocesorowy silnika (ECU) w aluminiowej obudowie radiacyjnej',
+      'Multimetr cyfrowy do pomiaru rezystancji czujników NTC oraz terminacji CAN (60 Ω)',
+      'Wtyk diagnostyczny 16-pinowy standardu OBD-II / EOBD'
+    ]
+  },
+  'rodzaje-silnikow': {
+    src: '/illustrations/engine-cutaway.jpg',
+    title: 'Rycina 4.1. Przekrój czterocylindrowego, czterosuwowego silnika rzędowego DOHC z turbodoładowaniem',
+    caption: 'Widoczne cztery cylindry w układzie R4, tłoki w położeniach GMP i DMP, korbowody, wykorbienia wału korbowego, głowica 16V DOHC oraz turbosprężarka.',
+    callouts: [
+      'Cztery cylindry w układzie rzędowym R4 (tłoki 1 i 4 w GMP, tłoki 2 i 3 w DMP)',
+      'Suw pracy (zapłon mieszanki), suw ssania (niebieski ładunek) i suw wydechu (pomarańczowy)',
+      'Głowica z dwoma wałkami rozrządu (DOHC) napędzanymi paskiem zębatym',
+      'Turbosprężarka po stronie kolektora wylotowego zwiększająca gęstość ładunku'
+    ]
+  },
+  'rodzaje-korbowodow-i-uklad-korbowy': {
+    src: '/illustrations/piston-conrod-exploded.jpg',
+    title: 'Rycina 4.2. Rysunek rozstrzelony (montażówka 3D) zespołu tłok–sworzeń–korbowód–panewki–stopa',
+    caption: 'Kompletny zestaw elementów układu korbowo-tłokowego ułożony w osi montażowej: od pierścieni tłokowych po śruby stopy korbowodu.',
+    callouts: [
+      'Pakiet 3 pierścieni tłokowych: 1. uszczelniający, 2. zgarniający, 3. olejowy z rozprężaczem',
+      'Tłok ze stopu aluminium + pływający sworzeń tłokowy + 2 pierścienie osadcze Segera',
+      'Korbowód kuty o przekroju dwuteowym (główka z tulejką, trzon, dzielona stopa)',
+      'Dwie półpanewki ślizgowe + pokrywa stopy korbowodu + 2 śruby plastyczne stopy'
+    ]
+  },
+  'uklad-rozrzadu': {
+    src: '/illustrations/engine-cutaway.jpg',
+    title: 'Rycina 4.3. Budowa układu rozrządu DOHC napędzanego paskiem zębatym w silniku 16-zaworowym',
+    caption: 'Przekrój głowicy i napędu rozrządu: dwa koła zębate wałków rozrządu, krzywki współpracujące z popychaczami, sprężyny zaworowe i zawory.',
+    callouts: [
+      'Koła zębate wałków rozrządu (wałek ssący i wydechowy – przełożenie 2:1 względem wału)',
+      'Pasek zębaty rozrządu z rolką napinającą i rolką prowadzącą',
+      'Krzywki wałków rozrządu naciskające na popychacze szklankowe i trzonki zaworów',
+      'Sprężyny zaworowe śrubowe zamykające zawory dolotowe i wylotowe'
+    ]
+  },
+  'uklad-chlodzenia': {
+    src: '/illustrations/cooling-ac.jpg',
+    title: 'Rycina 4.4. Przestrzenny schemat układu chłodzenia silnika oraz wymienników ciepła w pojeździe',
+    caption: 'Obieg gorącej cieczy chłodzącej (przewody czerwone) z głowicy do chłodnicy głównej i nagrzewnicy kabiny oraz powrót schłodzonej cieczy (przewody niebieskie).',
+    callouts: [
+      'Chłodnica główna z elektrycznym wentylatorem osiowym',
+      'Ciśnieniowy zbiorniczek wyrównawczy z korkiem wyposażonym w 2 zaworki (1,2–1,5 bar)',
+      'Obudowa termostatu przełączająca mały i duży obieg cieczy chłodzącej',
+      'Nagrzewnica wnętrza kabiny (włączona w mały obieg układu chłodzenia)'
+    ]
+  },
+  'uklad-klimatyzacji': {
+    src: '/illustrations/cooling-ac.jpg',
+    title: 'Rycina 4.5. Rozmieszczenie podzespołów układu klimatyzacji i obiegu chłodniczego w komorze silnika',
+    caption: 'Współpraca sprężarki klimatyzacji napędzanej paskiem wielorowkowym ze skraplaczem przed chłodnicą oraz parownikiem w zespole nagrzewnicy.',
+    callouts: [
+      'Sprężarka (kompresor) klimatyzacji napędzana paskiem PK od wału korbowego',
+      'Skraplacz (kondensator) zamontowany przed chłodnicą cieczy chłodzącej',
+      'Przewody wysokiego ciśnienia HP (czerwona poświata) i niskiego ciśnienia LP (błękitna poświata)',
+      'Wymiennik kabinowy (parownik klimatyzacji / nagrzewnica) odbierający ciepło z nawiewu'
+    ]
+  },
+  'budowa-zawieszenia': {
+    src: '/illustrations/suspension-brake.jpg',
+    title: 'Rycina 4.6. Budowa przedniego niezależnego zawieszenia z kolumną MacPhersona i wahaczem dolnym',
+    caption: 'Kompletny moduł lewego przedniego koła: kolumna amortyzatora ze sprężyną śrubową, zwrotnica, wahacz trójkątny z tulejami, półoś napędowa i przekładnia kierownicza.',
+    callouts: [
+      'Górne mocowanie kolumny (poduszka gumowo-metalowa z łożyskiem oporowym MacPhersona)',
+      'Sprężyna śrubowa + amortyzator teleskopowy z osłoną przeciwpyłową tłoczyska',
+      'Dolny wahacz poprzeczny typu L z tulejami metalowo-gumowymi (silentblockami)',
+      'Sworzeń kulowy wahacza łączący wahacz ze zwrotnicą koła + łącznik stabilizatora'
+    ]
+  },
+  'uklad-hamulcowy': {
+    src: '/illustrations/suspension-brake.jpg',
+    title: 'Rycina 4.7. Mechanizm hamulca tarczowego z wentylowaną i nawiercaną tarczą oraz zaciskiem',
+    caption: 'Zespół hamulcowy przedniej osi osadzony na piaście zwrotnicy wraz z elastycznym przewodem hydraulicznym i czujnikiem prędkości koła ABS.',
+    callouts: [
+      'Wentylowana tarcza hamulcowa osadzona na piaście koła (max. bicie boczne 0,05 mm)',
+      'Zacisk hamulcowy z klockami ciernymi (minimalna grubość okładziny 1,5–2,0 mm)',
+      'Elastyczny przewód hamulcowy doprowadzający płyn DOT 4 do cylindra zacisku',
+      'Przewód czujnika prędkości obrotowej koła układu ABS / ESP'
+    ]
+  },
+  'obsluga-oscyloskopu': {
+    src: '/illustrations/diagnostics-oscilloscope.jpg',
+    title: 'Rycina 5.1. Dwukanałowy oscyloskop diagnostyczny podczas pomiaru czujnika indukcyjnego i czujnika Halla',
+    caption: 'Porównanie na wspólnym ekranie siatki (div) przebiegu analogowego sinusoidalnego (kanał 1 – pomarańczowy) oraz cyfrowego prostokątnego (kanał 2 – błękitny).',
+    callouts: [
+      'Kanał 1 (pomarańczowy): przebieg sinusoidalny czujnika indukcyjnego CKP',
+      'Kanał 2 (błękitny): przebieg prostokątny 0–5 V czujnika hallotronowego CMP / sygnału PWM',
+      'Pokrętła nastaw podstawy czasu (ms/div), czułości napięciowej (V/div) i wyzwalania (Trigger)',
+      'Sondy pomiarowe BNC wpięte w obwody czujników przy sterowniku ECU'
+    ]
+  },
+  'geometria-kol': {
+    src: '/illustrations/suspension-brake.jpg',
+    title: 'Rycina 5.2. Elementy układu kierowniczego i zawieszenia odpowiadające za regulację geometrii kół',
+    caption: 'Drążek kierowniczy z końcówką drążka i nakrętką kontrującą (regulacja zbieżności połówkowej) oraz oś obrotu zwrotnicy (kąty Camber, Caster i KPI).',
+    callouts: [
+      'Drążek kierowniczy z końcówką kulową i nakrętką kontrującą (regulacja zbieżności kół)',
+      'Harmonijkowa osłona gumowa przekładni kierowniczej (nie może pozostać skręcona po regulacji!)',
+      'Oś skrętu zwrotnicy wyznaczona przez górne łożysko kolumny i dolny sworzeń wahacza (kąt KPI / Caster)',
+      'Mocowanie zwrotnicy do kolumny amortyzatora (wpływa na kąt pochylenia koła Camber)'
+    ]
+  },
+  'odczyt-kodow-bledow-obd': {
+    src: '/illustrations/diagnostics-oscilloscope.jpg',
+    title: 'Rycina 5.3. Zestaw diagnostyki pokładowej: złącze 16-pinowe OBD-II (DLC), sterownik ECU i przyrządy pomiarowe',
+    caption: 'Prawidłowa metodyka diagnostyczna MOT.05: odczyt kodu DTC i parametrów bieżących przez złącze OBD-II, a następnie weryfikacja obwodu multimetrem i oscyloskopem.',
+    callouts: [
+      '16-pinowy wtyk diagnostyczny standardu OBD-II / EOBD (pin 16: +12V, piny 4/5: masa, piny 6/14: CAN)',
+      'Sterownik silnika (ECU) przechowujący kody usterek DTC oraz dane Zamrożonej Ramki (Freeze Frame)',
+      'Multimetr do weryfikacji ciągłości wiązki, zasilania 5V i rezystancji przed wymianą czujnika',
+      'Oscyloskop do oceny rzeczywistego kształtu sygnału na pinach sterownika'
+    ]
   }
+};
+
+function TopicIllustrationBanner({ topicId }) {
+  const [zoomed, setZoomed] = useState(false);
+  const item = TOPIC_ILLUSTRATIONS[topicId];
+  if (!item) return null;
+
+  return (
+    <>
+      <div className="bg-slate-900 text-slate-100 rounded-xl border border-slate-700 overflow-hidden my-6 shadow-sm">
+        <div className="bg-slate-950 px-4 py-2.5 border-b border-slate-800 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <ImageIcon className="w-4 h-4 text-orange-400 shrink-0" />
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-400">
+              {item.title}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setZoomed(true)}
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-300 hover:text-white bg-slate-800 px-2.5 py-1 rounded border border-slate-700 cursor-pointer shrink-0"
+          >
+            <Maximize2 className="w-3.5 h-3.5 text-sky-400" />
+            Powiększ ilustrację
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12">
+          <div
+            onClick={() => setZoomed(true)}
+            className="lg:col-span-7 relative group cursor-zoom-in bg-slate-950 flex items-center justify-center overflow-hidden"
+          >
+            <img
+              src={item.src}
+              alt={item.title}
+              className="w-full h-64 sm:h-72 object-cover object-center"
+              loading="lazy"
+            />
+            <div className="absolute bottom-2 right-2 bg-slate-950/80 text-slate-200 text-[11px] font-mono px-2 py-1 rounded border border-slate-700">
+              Kliknij, aby powiększyć
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 p-4 sm:p-5 bg-slate-900 border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col justify-between space-y-3">
+            <div>
+              <div className="text-xs font-mono uppercase text-sky-400 font-semibold mb-1">
+                Opis techniczny ryciny:
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed mb-3">
+                {item.caption}
+              </p>
+              <div className="text-xs font-mono uppercase text-slate-400 mb-2">
+                Wyszczególnione elementy podzespołu:
+              </div>
+              <ol className="space-y-1.5">
+                {item.callouts.map((c, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-200">
+                    <span className="w-4 h-4 rounded bg-orange-500/20 border border-orange-500/50 text-orange-400 font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <span className="leading-snug">{c}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Fullscreen Lightbox Modal */}
+      {zoomed && (
+        <div
+          className="fixed inset-0 z-50 bg-slate-950/90 flex items-center justify-center p-4"
+          onClick={() => setZoomed(false)}
+        >
+          <div
+            className="max-w-5xl w-full bg-slate-900 rounded-xl border border-slate-700 overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+              <span className="text-xs sm:text-sm font-bold text-orange-400">
+                {item.title}
+              </span>
+              <button
+                type="button"
+                onClick={() => setZoomed(false)}
+                className="p-1 text-slate-400 hover:text-white cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <img
+              src={item.src}
+              alt={item.title}
+              className="w-full max-h-[75vh] object-contain bg-slate-950"
+            />
+            <div className="p-4 bg-slate-900 text-xs sm:text-sm text-slate-300 border-t border-slate-800">
+              {item.caption}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default function TechnicalDiagram({ topicId }) {
+  const renderSvgDiagram = () => {
+    switch (topicId) {
+      case 'bezpieczenstwo-w-warsztacie':
+      case 'postepowanie-z-odpadami':
+      case 'ppoz':
+        return <BhpLiftAndSafetyDiagram />;
+      case 'rodzaje-silnikow':
+        return <EngineConfigsDiagram />;
+      case 'rodzaje-korbowodow-i-uklad-korbowy':
+        return <CrankAssemblyDiagram />;
+      case 'uklad-rozrzadu':
+        return <TimingBeltDiagram />;
+      case 'uklad-chlodzenia':
+        return <CoolingCircuitDiagram />;
+      case 'uklad-klimatyzacji':
+        return <AcCircuitDiagram />;
+      case 'budowa-zawieszenia':
+        return <SuspensionAssemblyDiagram />;
+      case 'uklad-hamulcowy':
+        return <BrakeAssemblyDiagram />;
+      case 'prawo-ohma':
+      case 'uklad-rozruchu-rozrusznik':
+      case 'dzialanie-alternatora':
+      case 'budowa-akumulatora':
+        return <StarterAlternatorWiringDiagram />;
+      case 'obsluga-oscyloskopu':
+      case 'czujniki-i-elektronika-silnikowa':
+      case 'odczyt-kodow-bledow-obd':
+        return <OscilloscopeAndObdDiagram defaultTab={topicId === 'odczyt-kodow-bledow-obd' ? 'obd' : 'scope'} />;
+      case 'geometria-kol':
+        return <WheelAlignmentDiagram />;
+      case 'rodzaje-gwintow':
+      case 'tolerancje-i-pasowania':
+      case 'rysunek-techniczny':
+        return <PkmTechnicalDrawingDiagram defaultTab={topicId === 'tolerancje-i-pasowania' ? 'fits' : 'thread'} />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <TopicIllustrationBanner topicId={topicId} />
+      {renderSvgDiagram()}
+    </div>
+  );
 }
 
 /* ============================================================================
