@@ -232,6 +232,17 @@ const TOPIC_ILLUSTRATIONS = {
       'Multimetr do weryfikacji ciągłości wiązki, zasilania 5V i rezystancji przed wymianą czujnika',
       'Oscyloskop do oceny rzeczywistego kształtu sygnału na pinach sterownika'
     ]
+  },
+  'oznaczenia-marek-i-systemow': {
+    src: '/illustrations/engine-cutaway.jpg',
+    title: 'Rycina 4.8. Kompendium konstrukcji silnikowych, układów wtryskowych i systemów podwozia według marek (OEM)',
+    caption: 'Porównanie rozwiązań technologicznych stosowanych przez wiodące koncerny motoryzacyjne (VAG, BMW, Mercedes-Benz, Stellantis, Toyota, Honda, Mazda, Ford, Renault/Nissan, Subaru).',
+    callouts: [
+      'Wtrysk bezpośredni benzyny (TSI/TFSI, CGI, TwinPower Turbo, PureTech, EcoBoost, TCe, D-4S, Skyactiv)',
+      'Układy wysokoprężne Common Rail (TDI CR, CDI/d, BlueHDi, MultiJet/JTD, TDCi/EcoBlue, dCi, D-4D)',
+      'Zmienne fazy i wznios zaworów (VTEC, VANOS + Valvetronic, MultiAir, Audi Valvelift, VVT-i / Valvematic)',
+      'Układy stabilizacji toru jazdy i napędu 4x4 (ESP/DSC/VSC/VSA oraz quattro Torsen/Haldex, xDrive, 4MATIC)'
+    ]
   }
 };
 
@@ -347,6 +358,7 @@ export default function TechnicalDiagram({ topicId }) {
       case 'ppoz':
         return <BhpLiftAndSafetyDiagram />;
       case 'rodzaje-silnikow':
+      case 'oznaczenia-marek-i-systemow':
         return <EngineConfigsDiagram />;
       case 'rodzaje-korbowodow-i-uklad-korbowy':
         return <CrankAssemblyDiagram />;

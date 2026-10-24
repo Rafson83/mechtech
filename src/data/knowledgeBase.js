@@ -1025,6 +1025,25 @@ export const CATEGORIES = [
                 ['Próba olejowa (gdy ciśnienie jest za niskie)', 'Wstrzyknięcie do cylindra ok. 5 cm³ czystego oleju silnikowego (uszczelniającego styk tłok–pierścienie–gładź) i powtórzenie pomiaru', 'Jeśli ciśnienie WZROŚNIE: zużyte pierścienie tłokowe lub gładź cylindra. Jeśli ciśnienie NIE WZROŚNIE: nieszczelne zawory (wypalone gniazdo) lub uszkodzona uszczelka pod głowicą (UPG)!']
               ]
             }
+          },
+          {
+            heading: '5. Specyficzne odmiany i oznaczenia silników dla poszczególnych marek i modeli',
+            content:
+              'Każdy koncern motoryzacyjny stosuje własne oznaczenia handlowe i kody konstrukcyjne dla rodzin silników benzynowych (ZI), wysokoprężnych (ZS) oraz jednostek o nietypowym układzie cylindrów:',
+            table: {
+              headers: ['Marka / Koncern', 'Oznaczenia silników ZI (Benzynowe)', 'Oznaczenia silników ZS (Diesel)', 'Specyficzne odmiany i flagowe modele'],
+              rows: [
+                ['Grupa VAG (VW, Audi, Škoda, Seat)', 'FSI, TSI, TFSI (rodziny EA211 1.0/1.4/1.5 TSI oraz EA888 1.8/2.0 TSI)', 'TDI (historycznie VP37 i pompowtryskiwacze PD; obecnie Common Rail EA288 2.0 TDI, 3.0 V6 TDI)', 'VR6 (wąskokątny 15° z jedną głowicą w Golfie R32/Passacie), R5 2.5 TFSI (kolejność 1-2-4-5-3 w Audi RS3), W12 6.0 (Audi A8/Bentley)'],
+                ['BMW', 'i / TwinPower Turbo (modułowe B38 1.5 R3, B48 2.0 R4, B58 3.0 R6; S58 w M3/M4)', 'd / TwinPower Turbo Diesel (M47, N47, B47 2.0d R4 oraz M57, N57, B57 3.0d R6)', 'Tradycja wzdłużnych silników rzędowych 6-cylindrowych (R6 – idealne wyrównoważenie sił I i II rzędu) w Serii 3, 5, 7 i X5'],
+                ['Mercedes-Benz', 'CGI / EQ Boost 48V (M274, M264, M254 2.0 R4 oraz rzędowy M256 3.0 R6 ISG)', 'CDI / BlueTEC / d (OM646, OM651 2.1 CDI, nowoczesny OM654 2.0d, OM656 3.0 R6)', 'Silnik OM654 (Klasa C W205/W206, Klasa E W213) łączy aluminiowy kadłub z powłoką Nanoslide ze stalowymi tłokami'],
+                ['Stellantis (Peugeot, Citroën, Opel, Fiat, Alfa)', 'PSA: 1.2 PureTech (EB2 R3), 1.6 THP (EP6) | FCA: 1.0/1.3 GSE FireFly, 1.4 T-Jet/MultiAir, 2.0 GME', 'PSA: HDi / BlueHDi (1.5 DV5, 2.0 DW10) | FCA: JTD / MultiJet (1.3, 1.6, 2.0, 2.2 JTDm)', 'Alfa Romeo 156 1.9 JTD (1997 r.) to pierwszy na świecie samochód osobowy z wtryskiem Common Rail; Alfa Giulia QV – 2.9 V6 Bi-Turbo (90°)'],
+                ['Toyota / Lexus', 'VVT-i, Valvematic, D-4S (podwójny wtrysk MPI+GDI) oraz Hybrid Dynamic Force (1.8 2ZR-FXE, 2.0 M20A-FXS, 2.5 A25A-FXS)', 'D-4D (np. 1.4 D-4D, 2.0/2.2 D-4D, 2.8 D-4D w Land Cruiserze i Hiluxie)', 'Silniki hybrydowe w Corolli, Yarisie i RAV4 pracują w obiegu Atkinsona (opóźnione zamknięcie zaworów dolotowych, sprawność cieplna 41%)'],
+                ['Ford', 'EcoBoost (1.0 EcoBoost R3, 1.5 EcoBoost, 2.0/2.3 EcoBoost) oraz 5.0 V8 Ti-VCT Coyote (Mustang)', 'TDCi (Duratorq 1.5/1.6/2.0) oraz najnowsza rodzina 2.0 EcoBlue', 'W 1.0 EcoBoost potrafiono wyłączyć 1 z 3 cylindrów przy niskim obciążeniu; w Mustangu GT wolnossący 5.0 V8 DOHC 32V'],
+                ['Renault / Nissan / Dacia', 'TCe / DIG-T (0.9/1.0 TCe R3, 1.2 TCe, 1.3 TCe H5Ht opracowany wspólnie z Daimlerem)', 'dCi (legendarny 1.5 dCi K9K, 1.6 dCi R9M, 2.0 dCi M9R)', 'Nissan wprowadził seryjny silnik o zmiennym stopniu sprężania VC-Turbo (1.5 i 2.0 KR20DDET w Qashqai e-Power i Infiniti QX50)'],
+                ['Subaru oraz Porsche', 'Subaru Boxer (2.0 FB20, 2.4 FA24, 2.0/2.5 EJ20/EJ25 Turbo WRX STI) | Porsche Boxer B6/B4 (911, 718 Cayman)', 'Subaru 2.0 Boxer Diesel (EE20 – pierwszy na świecie seryjny diesel przeciwsobny B4) | Porsche V6/V8 TDI (z VAG)', 'Silniki przeciwsobne Boxer (kąt 180°) zapewniają bardzo niski środek ciężkości i symetryczny układ napędowy'],
+                ['Honda oraz Mazda', 'Honda: VTEC / i-VTEC / VTEC Turbo (1.5 L15B, 2.0 K20C Type-R) | Mazda: Skyactiv-G oraz e-Skyactiv X (SPCCI)', 'Honda: i-CTDi / i-DTEC (1.6 i 2.2) | Mazda: Skyactiv-D (2.2 z niskim stopniem sprężania 14:1)', 'Mazda rozwija również silniki z tłokiem obrotowym Wankla (13B-MSP Renesis w RX-8 oraz generator prądotwórczy 8C w MX-30 R-EV)']
+              ]
+            }
           }
         ],
         examTip:
@@ -1058,7 +1077,7 @@ export const CATEGORIES = [
         id: 'rodzaje-korbowodow-i-uklad-korbowy',
         title: 'Rodzaje korbowodów i układ korbowo-tłokowy',
         subtitle: 'Budowa korbowodu (główka, trzon, stopa), podział prosty, ukośny i łamany kruszeniowo (fracture-split), korbowody silników widlastych, panewki i sworznie.',
-        readingTime: '11 min',
+        readingTime: '12 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'korbowód', 'stopa korbowodu', 'główka korbowodu', 'korbowód łamany', 'podział ukośny',
@@ -1117,6 +1136,21 @@ export const CATEGORIES = [
                 ['Luz poosiowy (wzdłużny) wału korbowego', 'Czujnik zegarowy w statywie magnetycznym przystawiony do czoła wału (regulowany półpierścieniami oporowymi)', 'Wartość nominalna: 0,07 – 0,18 mm (granica zużycia półpierścieni: 0,25 – 0,30 mm)']
               ]
             }
+          },
+          {
+            heading: '5. Specyficzne konstrukcje układu korbowo-tłokowego i gładzi cylindrowych według marek',
+            content:
+              'W zależności od marki i przeznaczenia silnika producenci stosują unikalne rozwiązania korbowodów, tłoków i powłok tulei cylindrowych:',
+            table: {
+              headers: ['Rozwiązanie konstrukcyjne', 'Marki i modele / Kody silników', 'Cel techniczny i uwagi warsztatowe'],
+              rows: [
+                ['Korbowód z główką trapezową (skośną)', 'Grupa VAG (1.9/2.0 TDI, 3.0 V6 TDI), Mercedes (OM651), PSA (2.0 BlueHDi)', 'Główka korbowodu jest szersza u dołu (w kształcie trapezu), a piasty tłoka u góry. Zwiększa to powierzchnię nośną sworznia tłokowego w suwie pracy pod ogromnym ciśnieniem spalania w dieslu!'],
+                ['Wielodźwigniowy korbowód o zmiennym stopniu sprężania (VC-Turbo)', 'Nissan / Infiniti (1.5 VC-Turbo e-Power w Qashqai/X-Trail oraz 2.0 KR20DDET)', 'Korbowód połączony jest z czopem wału za pośrednicwem wahliwego łącznika (Multi-link) i wałka sterującego. Siłownik zmienia wysokość GMP tłoka w czasie jazdy (ε od 8:1 do 14:1)!'],
+                ['Stalowe tłoki w aluminiowym kadłubie z powłoką Nanoslide', 'Mercedes-Benz (2.0d OM654, 3.0d OM656), Renault/Volvo w wybranych wysilonych ZS', 'Stalowy tłok jest niższy, wytrzymuje większe ciśnienia spalania i rozszerza się cieplnie mniej niż aluminium, a żelazowo-węglowa powłoka Nanoslide zmniejsza tarcie o 50%'],
+                ['Panewki bez zamków ustalających (ustalane przyrządem) i panewki Sputter', 'Renault (1.5 dCi K9K), VAG (TDI/TSI), BMW (seria N/B oraz M-Power S65/S85)', 'W 1.5 dCi K9K półpanewki nie posiadają wyciętych zamków! W silnikach TDI GÓRNA panewka korbowodowa (bardziej obciążona) jest wykonana w technologii Sputter (oznaczona napisem SPUTTER – nie wolno zamienić z dolną!)'],
+                ['Powłoki bez tulei żeliwnych: Alusil / Nikasil / APS (natrysk plazmowy)', 'VW (1.5 TSI EA211 evo), Renault/Mercedes (1.3 TCe), BMW (M52/N62), Porsche, Nissan GT-R', 'Tuleje z natryskiem plazmowym (0,15–0,20 mm) NIE PODLEGAJĄ szlifowaniu ani klasycznemu honowaniu na wymiar naprawczy!']
+              ]
+            }
           }
         ],
         examTip:
@@ -1150,7 +1184,7 @@ export const CATEGORIES = [
         id: 'uklad-rozrzadu',
         title: 'Układ rozrządu',
         subtitle: 'Zadania układu rozrządu, typy OHV, OHC i DOHC, napęd paskiem zębatym i łańcuchem, luz zaworowy oraz zmienne fazy rozrządu (VVT).',
-        readingTime: '10 min',
+        readingTime: '12 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'rozrząd', 'wałek rozrządu', 'zawór', 'popychacz', 'pasek rozrządu', 'łańcuch',
@@ -1207,6 +1241,23 @@ export const CATEGORIES = [
                 ['Regulacja zaworów podkładkami / szklankami', 'Mikrometr + szczelinomierz listkowy', 'Wzór na nową grubość płytki: N = S + (L_zmierzony - L_nominalny), gdzie S to grubość starej płytki']
               ]
             }
+          },
+          {
+            heading: '5. Wykaz systemów zmiennych faz i wzniosu zaworów oraz nietypowych rozrządów według marek',
+            content:
+              'Zestawienie tożsamych i specyficznych systemów sterowania zaworami oraz rozwiązań napędu rozrządu w najpopularniejszych markach:',
+            table: {
+              headers: ['Marka / Producent', 'Nazwa systemu rozrządu', 'Zasada działania i specyfika serwisowa w modelach'],
+              rows: [
+                ['Honda', 'VTEC / i-VTEC', 'Skokowa zmiana wzniosu zaworów! Powyżej ~4500 obr./min zawór elektromagnetyczny podaje ciśnienie oleju na sworzeń, który spina dwie dźwigienki z trzecią (środkową) napędzaną wysoką krzywką sportową'],
+                ['BMW (oraz PSA/Mini 1.6 VTi)', 'VANOS / Double-VANOS + Valvetronic', 'VANOS zmienia kąt fazowy wałków, a Valvetronic za pomocą silnika elektrycznego i wałka mimośrodowego płynnie zmienia skok zaworów dolotowych (od 0,2 do 9,9 mm), przejmując funkcję przepustnicy!'],
+                ['Fiat / Alfa Romeo / Jeep (Stellantis)', 'MultiAir / UniAir / TwinAir', 'Brak wałka rozrządu zaworów dolotowych! Krzywka wydechowa napędza tłoczek komory olejowej. Elektrozawór sterowany przez ECU decyduje, czy olej otworzy zawór na pełny skok, czy upuści ciśnienie (wrażliwy na brudny olej!)'],
+                ['Grupa VAG (Audi / VW / Porsche)', 'AVS (Audi Valvelift) / ACT (COD) / VarioCam Plus', 'Przesuwne tuleje na wałku rozrządu ze spiralnymi rowkami. Elektromagnetyczny trzpień przesuwa tuleję na zarys mniejszej krzywki lub krzywki „zerowej” (wyłączającej cylindry 2 i 3 w 1.4/1.5 TSI ACT)'],
+                ['Toyota / Lexus', 'VVT-i / Dual VVT-i / VVT-iE / Valvematic', 'Łopatkowe wariatory faz rozrządu sterowane ciśnieniem oleju (VVT-i) lub silnikiem elektrycznym (VVT-iE) oraz system bezstopniowej zmiany wzniosu zaworów Valvematic (np. Avensis/Corolla 1.8 2ZR-FAE)'],
+                ['Ford oraz PSA (Peugeot/Citroën/Opel)', 'Pasek rozrządu w kąpieli olejowej (Wet Belt / BIO)', 'Stosowany w Ford 1.0 EcoBoost, 2.0 EcoBlue oraz PSA 1.2 PureTech (EB2). Pasek z kordem odpornym na olej pracuje wewnątrz bloku. Rozpuszczanie się gumy paska (zły olej/paliwo w oleju) zatyka smok pompy oleju!'],
+                ['BMW (N47/B47/N57), Audi (3.0 TDI), Mercedes (OM651/OM654)', 'Łańcuch rozrządu od strony skrzyni biegów (z tyłu bloku)', 'Umieszczony przy kole zamachowym ze względu na mniejsze drgania skrętne wału i ochronę pieszych (niższa maska). Wymiana rozrządu wymaga wyjęcia skrzyni biegów lub silnika!']
+              ]
+            }
           }
         ],
         examTip:
@@ -1240,7 +1291,7 @@ export const CATEGORIES = [
         id: 'uklad-chlodzenia',
         title: 'Układ chłodzenia silnika',
         subtitle: 'Mały i duży obieg cieczy chłodzącej, budowa termostatu, pompa cieczy, korek ciśnieniowy zbiorniczka, płyny G11/G12/G13 oraz badanie refraktometrem.',
-        readingTime: '10 min',
+        readingTime: '11 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'układ chłodzenia', 'termostat', 'mały obieg', 'duży obieg', 'chłodnica', 'nagrzewnica',
@@ -1295,6 +1346,20 @@ export const CATEGORIES = [
                 ['Badanie wymontowanego termostatu', 'Zanurzenie w naczyniu z podgrzewaną wodą i termometrem laboratoryjnym', 'Początek otwarcia: zgodnie z cechą na korpusie (np. 87°C ± 2°C). Pełny skok zaworu: min. 7–8 mm przy temp. ok. 100–102°C']
               ]
             }
+          },
+          {
+            heading: '5. Specyficzne rozwiązania układów chłodzenia i normy płynów według marek',
+            content:
+              'Współczesne samochody wykorzystują aktywne zarządzanie temperaturą (ITMS), elektryczne pompy cieczy oraz rozdzielone obiegi chłodzenia dla głowicy i bloku:',
+            table: {
+              headers: ['Marka / Koncern', 'Fabryczna specyfikacja płynu', 'Specyficzne rozwiązanie konstrukcyjne i procedura odpowietrzania'],
+              rows: [
+                ['Grupa VAG (VW, Audi, Škoda, Seat)', 'TL 774-J (G13) / TL 774-L (G12 evo)', 'W silnikach 1.8/2.0 TSI (EA888) zastosowano zintegrowany moduł obrotowych przesłon regulujących przepływ z osobnym małym paskiem napędzającym pompę wody z wałka wyrównoważającego; w 2.0 TDI (EA288) pompa cieczy posiada przesuwną tuleję odcinającą tłoczenie na zimnym silniku!'],
+                ['BMW', 'BMW LC-87 (G48 niebieski) / LC-18 (HT-12 zielony)', 'Od serii N52/N54/B48/B58 stosowane są główne ELEKTRYCZNE pompy cieczy chłodzącej (ok. 200–400 W). Odpowietrzanie wykonuje się na zgaszonym silniku: włącz zapłon, ustaw ogrzewanie na MAX, dmuchawę na 1 bieg i przytrzymaj wciśnięty pedał gazu przez 10 sekund – pompa elektryczna uruchomi 12-minutowy program odpowietrzania!'],
+                ['Toyota / Lexus (Hybrydy HSD)', 'Toyota Super Long Life Coolant (SLLC – różowy)', 'Dwa całkowicie niezależne układy chłodzenia z dwoma zbiorniczkami wyrównawczymi pod maską: 1) Wysokotemperaturowy dla silnika spalinowego (z elektryczną pompą cieczy) oraz 2) Niskotemperaturowy (do 65°C) chłodzący falownik (inwerter) i generatory MG1/MG2!'],
+                ['Peugeot / Citroën (PSA) oraz Renault', 'PSA B71 5110 (Glystop) | Renault Typ D (Glaceol RX)', 'W silnikach 1.6 THP / 1.6 VTi (EP6) koło pompy cieczy napędzane jest z koła pasowego wału za pomocą elektrycznie odchylanego koła ciernego (tzw. „gitary”) – pompa włącza się dopiero po rozgrzaniu silnika']
+              ]
+            }
           }
         ],
         examTip:
@@ -1328,7 +1393,7 @@ export const CATEGORIES = [
         id: 'uklad-klimatyzacji',
         title: 'Układ klimatyzacji i wentylacji',
         subtitle: 'Obieg termodynamiczny klimatyzacji (sprężarka, skraplacz, zawór rozprężny, parownik), czynniki R134a i R1234yf, oleje PAG/POE oraz diagnostyka ciśnień LP/HP.',
-        readingTime: '11 min',
+        readingTime: '12 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'klimatyzacja', 'sprężarka', 'kompresor', 'skraplacz', 'parownik', 'zawór rozprężny',
@@ -1390,6 +1455,20 @@ export const CATEGORIES = [
                 ['Podciśnienie (< 0 bar)', 'Niskie lub normalne', 'Niedrożność (przytkany filtr-osuszacz lub zamarznięty / zablokowany w pozycji zamkniętej zawór rozprężny TXV)']
               ]
             }
+          },
+          {
+            heading: '5. Specyfika konstrukcji układów klimatyzacji w różnych markach pojazdów',
+            content:
+              'Poszczególni producenci stosują odmienne typy sprężarek, elementów dławiących oraz układów pompy ciepła:',
+            table: {
+              headers: ['Rozwiązanie konstrukcyjne', 'Marki i modele pojazdów', 'Cechy charakterystyczne i diagnostyka warsztatowa'],
+              rows: [
+                ['Sprężarka bezsprzęgłowa o zmiennej pojemności skokowej (zawór PWM)', 'Grupa VAG (Climatronic – kompresory Sanden PXE16 / Denso 6SEU14), BMW, Mercedes-Benz, PSA', 'Brak klasycznego sprzęgła elektromagnetycznego! Wałek sprężarki obraca się stale z kołem pasowym (przy wyłączonej klimatyzacji tarcza zataczająca ma minimalny kąt wychylenia ~2% dla smarowania). UWAGA: kategoryczny zakaz uruchamiania silnika przy pustym układzie klimatyzacji (zatarcie sprężarki i zerwanie tarczy sprzęgła zrywalnego)!'],
+                ['Układ z dyszą dławiącą (Orifice Tube) i zasobnikiem po stronie LP', 'Audi A4 (B5/B6/B7), Audi A6 (C5), wybrane modele Forda, Opla i aut amerykańskich', 'Zamiast termostatycznego zaworu rozprężnego TXV w rurce znajduje się stała kalibrowana dysza dławiąca z sitkiem, a duży zasobnik (akumulator czynnika) umieszczony jest po stronie NISKIEGO ciśnienia między parownikiem a sprężarką'],
+                ['Elektryczna sprężarka wysokonapięciowa (HV) typu Scroll', 'Toyota / Lexus Hybrid (Prius, Corolla, RAV4, Camry), Honda e:HEV, auta elektryczne EV', 'Napędzana wewnętrznym silnikiem bezszczotkowym 3-fazowym AC z falownika (200–400 V). Chłodzi kabinę nawet przy wyłączonym silniku spalinowym na postoju. Wymaga wyłącznie oleju dielektrycznego POE (np. Denso ND-OIL 11)!'],
+                ['Klimatyzacja i pompa ciepła na dwutlenek węgla R744 (CO₂)', 'Volkswagen ID.3 / ID.4 / ID.7, Audi Q4/Q8 e-tron, wybrana Mercedes Klasa S (W222/W223) i E (W213)', 'Ekologiczny czynnik R744 (GWP = 1), całkowicie niepalny, ale pracujący pod 10-krotnie wyższym ciśnieniem niż R134a (ciśnienie robocze LP ok. 35–45 bar, a HP aż do 100–130 bar!)']
+              ]
+            }
           }
         ],
         examTip:
@@ -1423,12 +1502,13 @@ export const CATEGORIES = [
         id: 'budowa-zawieszenia',
         title: 'Układy zawieszenia',
         subtitle: 'Podział na zawieszenia zależne, półzależne (belka skrętna) i niezależne (MacPherson, wielowahaczowe Multi-Link), pneumatyczne oraz zasady napraw.',
-        readingTime: '11 min',
+        readingTime: '14 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'zawieszenie', 'zależne', 'półzależne', 'niezależne', 'belka skrętna', 'wielowahaczowe',
           'multi-link', 'amortyzator', 'sprężyna', 'wahacz', 'sworzeń wahacza', 'tuleja metalowo-gumowa',
-          'silentblock', 'macpherson', 'stabilizator', 'pneumatyczne', 'ściągacz do sprężyn'
+          'silentblock', 'macpherson', 'stabilizator', 'pneumatyczne', 'ściągacz do sprężyn',
+          'hydractive', 'airmatic', 'control blade', '4control', 'dcc', 'długa śruba audi'
         ],
         summary:
           'Układ zawieszenia łączy koła jezdne z nadwoziem pojazdu, przenosi siły napędowe, hamowania i boczne, a jednocześnie izoluje kabinę od nierówności drogi i utrzymuje stały docisk opony do nawierzchni.',
@@ -1481,6 +1561,22 @@ export const CATEGORIES = [
                 ['Amortyzatory teleskopowe (badanie metodą Eusama)', 'Wycieki oleju na korpusie, podskakiwanie koła, ząbkowanie bieżnika opon, wydłużona droga hamowania', 'Wskaźnik przylegania koła Eusama: >60% bardzo dobry, 40–60% dobry, <20–30% zużyty. Maks. różnica na jednej osi: 15%']
               ]
             }
+          },
+          {
+            heading: '5. Charakterystyczne rozwiązania układów zawieszenia dla poszczególnych marek i modeli',
+            content:
+              'W praktyce warsztatowej poszczególne koncerny stosują opatentowane systemy zawieszeń, które wymagają odmiennej technologii obsługi i specjalistycznych narzędzi:',
+            table: {
+              headers: ['Marka / System fabryczny', 'Reprezentatywne modele', 'Budowa techniczna i pułapki serwisowe w warsztacie'],
+              rows: [
+                ['Audi / VW (Czterowahaczowe zawieszenie przednie)', 'Audi A4 (B5–B9), A6 (C5–C8), VW Passat B5 / B5 FL, Škoda Superb I', 'Na każde przednie koło przypadają 4 aluminiowe wahacze (2 górne + 2 dolne: nośny i prowadzący). Dwa górne wahacze spina w zwrotnicy słynna „długa śruba” M10x100, która zapieka się elektrochemicznie (stal w aluminium) – nie wolno grzać aluminiowej zwrotnicy palnikiem!'],
+                ['Citroën (Hydropneumatyczne Hydractive I–III+ oraz PHC)', 'Citroën Xantia, XM, C5 I–III (X7), C6; nowsze C4/C5 Aircross (PHC)', 'W Hydractive brak klasycznych sprężyn i amortyzatorów – rolę elementu sprężystego pełni azot w stalowych sferach (kulach) oddzielony membraną od płynu hydraulicznego (zielony mineralny LHM lub pomarańczowy syntetyczny LDS w C5/C6). Przed podniesieniem C5 III na podnośniku należy ustawić zawieszenie w pozycji MAX i odkręcić korek zbiornika LDS!'],
+                ['BMW (Oś przednia dwuprzegubowa + tył Integral-V / EHC)', 'BMW Serii 3 (E90/F30/G20), Serii 5 (E60/F10/G30), X5 (E70/G05)', 'Z przodu wahacz rozwidlony na dwa pojedyncze wahacze (wahacz poprzeczny + drążek rozciągany z hydropodporą). W modelach Touring (kombi, np. E61/F11) oraz SUV-ach na tylnej osi standardem jest pneumatyczne poziomowanie EHC (miechy powietrzne + kompresor pod podłogą bagażnika)'],
+                ['Mercedes-Benz (AIRMATIC / ABC / Magic Body Control)', 'Klasa E (W211/W212/W213), Klasa S (W220/W221/W222), GLE/GLS', 'AIRMATIC: pełna pneumatyka z kompresorem Wabco/AMK, listwą zaworową i czujnikami poziomu na wahaczach. ABC (Active Body Control): zawieszenie aktywne wysokociśnieniowe (ok. 190–200 bar oleju Pentosin CHF 11S) eliminujące przechyły nadwozia bez klasycznych stabilizatorów'],
+                ['Ford (Wielowahaczowa oś tylna Control Blade)', 'Ford Focus MK1/MK2/MK3/MK4, Mondeo MK4, Mazda 3 (BK/BL), Volvo S40/V50', 'Niezależne zawieszenie tylne z szerokim blaszanym wahaczem wzdłużnym („ostrzem” – Control Blade) i trzema wahaczami poprzecznymi. Najczęstszą usterką jest zerwanie przednich tulei wahacza wzdłużnego („tulei cukierków”) oraz zapieczenie śrub mimośrodowych regulacji zbieżności'],
+                ['Peugeot / Citroën / Renault (Belka tylna na drążkach skrętnych / 4Control)', 'Peugeot 206, 306, Partner, Citroën Berlingo; Renault Laguna III / Talisman (4Control)', 'W starszych autach PSA tylna belka na drążkach skrętnych posiada łożyska igiełkowe – ich zatarcie objawia się pochyleniem kół w „negatyw” (/ \\). Z kolei w Renault 4Control tylna belka skrętna współpracuje z elektrycznym siłownikiem skręcającym tylne koła do 3,5°']
+              ]
+            }
           }
         ],
         examTip:
@@ -1514,12 +1610,13 @@ export const CATEGORIES = [
         id: 'uklad-hamulcowy',
         title: 'Układy hamulcowe i systemy ABS/ESP',
         subtitle: 'Rodzaje hamulców (tarczowe ze stałym i pływającym zaciskiem, bębnowe Simplex/Duplex), układy dwuobwodowe X i TT, serwo, płyny DOT i systemy ABS/ASR/ESP.',
-        readingTime: '12 min',
+        readingTime: '14 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'hamulce', 'tarcza hamulcowa', 'klocki', 'zacisk pływający', 'zacisk stały', 'bębnowy',
           'simplex', 'serwo', 'pompa tandem', 'płyn hamulcowy', 'dot4', 'higroskopijny',
-          'odpowietrzanie', 'bicie tarczy', 'abs', 'esp', 'asr', 'epb'
+          'odpowietrzanie', 'bicie tarczy', 'abs', 'esp', 'asr', 'epb',
+          'dsc', 'vsc', 'vsa', 'psm', 'dstc', 'vdc', 'sbc', 'ibs', 'duo-servo'
         ],
         summary:
           'Hydrauliczny układ hamulcowy wykorzystuje prawo Pascala (ciśnienie wywierane na płyn w układzie zamkniętym rozchodzi się jednakowo we wszystkich kierunkach) oraz zjawisko tarcia do zamiany energii kinetycznej jadącego pojazdu w energię cieplną.',
@@ -1577,6 +1674,21 @@ export const CATEGORIES = [
                 ['Dopuszczalna różnica sił hamowania na jednej osi', 'Urządzenie rolkowe na Stacji Kontroli Pojazdów (SKP)', 'Różnica sił hamowania kół tej samej osi (lewe vs prawe) nie może przekraczać 30% (w odniesieniu do koła o większej sile)']
               ]
             }
+          },
+          {
+            heading: '5. Wykaz tożsamych systemów bezpieczeństwa (ESP / ASR) oraz rozwiązań hamulcowych według marek',
+            content:
+              'Podczas diagnostyki komputerowej w warsztacie ten sam układ stabilizacji toru jazdy i kontroli trakcji (dostarczany najczęściej przez firmy Bosch, Continental/ATE lub TRW) występuje pod różnymi nazwami handlowymi zależnie od marki:',
+            table: {
+              headers: ['Marka / Koncern', 'Oznaczenie ESP (Stabilizacja) i ASR (Trakcja)', 'Specyficzne rozwiązania hamulcowe i procedury serwisowe dla marki'],
+              rows: [
+                ['Grupa VAG, Mercedes, PSA, Renault', 'ESP / ESC (stabilizacja) + ASR / ETS (kontrola trakcji)', 'W autach VAG (Passat B6–B8, Golf VII, Audi A4/A6) i Renault (Scenic/Megane/Talisman) powszechne są tylne zaciski z silniczkami EPB – wymiana klocków wymaga otwarcia zacisków testerem (kanał 53/03). W Mercedesie W211/R230 elektrohydrauliczny układ SBC (Sensotronic Brake Control) wymaga dezaktywacji testerem przed wsunięciem rąk w zacisk!'],
+                ['BMW, Mini, Mazda, Jaguar', 'DSC (Dynamic Stability Control) + DTC / ASC+T (trakcja)', 'W starszych modelach BMW (E46, E39, E60, E90), Mercedesach (W203, W204, W211) i Volvo stosowano z tyłu TARCZO-BĘBNY (hamulec zasadniczy działa klockami na tarczę, a wewnątrz kapelusza tarczy znajdują się małe szczęki hamulca postojowego Duo-Servo regulowane pokrętłem zębatym przez otwór śruby koła). W BMW serii G (G20/G30) stosowany jest zintegrowany układ Brake-by-Wire (IBS)'],
+                ['Toyota, Lexus', 'VSC (Vehicle Stability Control) + TRC / A-TRAC (trakcja)', 'W hybrydach Toyota/Lexus (HSD – Prius, Corolla, Auris, RAV4) układ ECB (Electronically Controlled Braking) łączy hamowanie rekuperacyjne MG2 z hydraulicznym – odpowietrzanie wymaga procedury testerem Techstream'],
+                ['Honda, Alfa Romeo, Subaru, Nissan', 'VSA (Honda) / VDC (Alfa Romeo, Subaru, Nissan)', 'W Alfie Romeo Giulia i Stelvio zastosowano bezpróżniowy elektrohydrauliczny układ Brake-by-Wire Continental MK C1 (IBS) – przed wymianą klocków należy aktywować tryb serwisowy w menu pojazdu/testerem i nie otwierać drzwi kierowcy podczas cofania tłoczków'],
+                ['Volvo, Ford, Opel, Porsche', 'DSTC (Volvo) / IVD-ESP (Ford) / PSM (Porsche)', 'W samochodach Porsche (911, Cayenne, Panamera) oraz wersjach sportowych Audi RS / BMW M / Mercedes AMG stosowane są wielotłoczkowe zaciski stałe Brembo/Akebono oraz tarcze ceramiczno-węglowe (PCCB / CCB) wrażliwe na uderzenia mechaniczne przy zdejmowaniu koła']
+              ]
+            }
           }
         ],
         examTip:
@@ -1603,6 +1715,91 @@ export const CATEGORIES = [
             ],
             correctIndex: 1,
             explanation: 'Podział diagonalny (krzyżowy X) łączy koła po przekątnej pojazdu (LP+PT oraz PP+LT), dzięki czemu przy awarii jednego obwodu drugie przednie koło nadal zapewnia skuteczne hamowanie bez obrócenia auta.'
+          }
+        ]
+      },
+      {
+        id: 'oznaczenia-marek-i-systemow',
+        title: 'Oznaczenia silników i wykaz systemów tożsamych według marek (Kompendium OEM)',
+        subtitle: 'Interaktywne kompendium kodów silników (VAG EA211/EA888/EA288, BMW B47/B48/B58, Mercedes OM651/OM654, Stellantis PureTech/BlueHDi, Toyota, Ford, Renault) oraz słownik tożsamych systemów (VVT, Common Rail, GDI, AWD, ESP, skrzynie biegów).',
+        readingTime: '16 min',
+        examFrequency: 'Wysoka',
+        keywords: [
+          'marki', 'modele', 'oznaczenia silników', 'systemy tożsame', 'tsi', 'tfsi', 'tdi', 'hdi',
+          'cdti', 'dci', 'multijet', 'tdci', 'ecoboost', 'tce', 'puretech', 'skyactiv', 'vtec',
+          'valvetronic', 'vanos', 'multiair', 'vvt-i', 'quattro', 'xdrive', '4matic', 'haldex',
+          'torsen', 'dsg', 's-tronic', 'zf 8hp', '9g-tronic', 'dpf', 'fap', 'eolys', 'adblue'
+        ],
+        summary:
+          'Współczesny mechanik i diagnosta samochodowy musi biegle poruszać się w nomenklaturze technicznej różnych producentów. Choć prawa fizyki i budowa podzespołów (np. zasobnikowy układ Common Rail firmy Bosch czy sprzęgło wielopłytkowe BorgWarner/Haldex) są wspólne, każdy koncern samochodowy stosuje własne oznaczenia handlowe, kody rodzin silnikowych oraz specyficzne procedury obsługowe.',
+        interactiveTool: 'brand-system-explorer',
+        sections: [
+          {
+            heading: '1. Zbiorczy wykaz tożsamych układów wtryskowych (Benzyna GDI/Turbo oraz Diesel Common Rail)',
+            content:
+              'Poniższa tabela zestawia nazwy handlowe tych samych konstrukcyjnie układów zasilania paliwem u czołowych producentów samochodów:',
+            table: {
+              headers: ['Koncern / Marka', 'Wtrysk bezpośredni benzyny (GDI + Turbo)', 'Wtrysk bezpośredni oleju napędowego (Common Rail)', 'Kluczowe rodziny silnikowe i modele'],
+              rows: [
+                ['Grupa VAG (VW, Audi, Škoda, Seat)', 'TSI / TFSI / FSI (w Gen. 3B/EVO wtrysk kombinowany MPI+TSI)', 'TDI CR (od ok. 2008 r. po wycofaniu pompowtryskiwaczy PD)', 'Benzyna: EA211 (1.0/1.4/1.5 TSI), EA888 (1.8/2.0 TSI) | Diesel: EA189/EA288 (1.6/2.0 TDI), EA897 (3.0 V6 TDI) – Golf, Octavia, Passat, Audi A3/A4/A6'],
+                ['BMW / Mini', 'TwinPower Turbo (High Precision Injection – HPI)', 'd / TwinPower Turbo Diesel (np. 18d, 20d, 30d, 40d)', 'Benzyna: B38 (1.5 R3), N20/B48 (2.0 R4), N55/B58 (3.0 R6) | Diesel: N47/B47 (2.0 R4), M57/N57/B57 (3.0 R6) – Seria 1, 3, 5, X3, X5'],
+                ['Mercedes-Benz', 'CGI / BlueDIRECT (M274, M264, M254, M256)', 'CDI / BlueTEC / d (np. 200d, 220d, 350d)', 'Benzyna: M270/M274 (1.6/2.0), M282 (1.33 z Renault) | Diesel: OM651 (2.1 CDI), OM654 (2.0d), OM642/OM656 (3.0d) – Klasa A, C, E, GLC, Sprinter'],
+                ['Stellantis (Peugeot, Citroën, Opel, Fiat)', 'PureTech / THP (PSA), SIDI Turbo (Opel), T-Jet / MultiAir (Fiat)', 'HDi / BlueHDi (PSA), CDTI (Opel), JTD / MultiJet II (Fiat)', 'Benzyna: 1.2 PureTech (EB2), 1.6 THP/PureTech (EP6), 1.4 T-Jet | Diesel: 1.6/2.0 HDi (DV6/DW10), 1.5 BlueHDi (DV5), 1.3/1.6/2.0 MultiJet – 308, 3008, Corsa, Astra, Ducato'],
+                ['Ford', 'EcoBoost (1.0 R3, 1.5 R3/R4, 2.0 R4, 2.3 R4)', 'TDCi / EcoBlue (1.5, 2.0 EcoBlue)', '1.0 EcoBoost (Fox), 1.5/2.0 EcoBoost, 2.0 TDCi (konstrukcja wspólna z PSA DW10), 2.0 EcoBlue (Panther) – Fiesta, Focus, Mondeo, Kuga, Transit'],
+                ['Renault / Nissan / Dacia', 'TCe (Renault/Dacia) / DIG-T (Nissan)', 'dCi / Blue dCi (Renault/Nissan)', '0.9/1.0 TCe (H4Bt/H4Dt), 1.2 TCe (H5Ft), 1.3 TCe (H5Ht), 1.5 dCi (K9K), 1.6/2.0 dCi (R9M/M9R) – Clio, Megane, Captur, Duster, Qashqai'],
+                ['Toyota / Honda / Mazda / Hyundai-Kia', 'D-4S (Toyota), Earth Dreams Turbo (Honda), Skyactiv-G/X (Mazda), T-GDI (Hyundai/Kia)', 'D-4D (Toyota), i-DTEC (Honda), Skyactiv-D (Mazda), CRDi (Hyundai/Kia)', 'Toyota 1.8/2.0/2.5 Hybrid (2ZR-FXE / A25A-FXS), Mazda 2.0 Skyactiv-G (PE-VPS), Honda 1.5 VTEC Turbo, Hyundai/Kia 1.6 T-GDI / 1.6 CRDi']
+              ]
+            }
+          },
+          {
+            heading: '2. Wykaz tożsamych napędów 4x4 (AWD) oraz skrzyń biegów według marek',
+            content:
+              'Jednym z najważniejszych przykładów nazewnictwa marketingowego jest napęd na cztery koła – np. pod tą samą nazwą „Audi quattro” kryją się dwie zupełnie różne konstrukcje mechaniczne zależnie od ułożenia silnika:',
+            table: {
+              headers: ['System / Podzespół', 'Grupa VAG (Audi / VW / Škoda)', 'BMW & Mercedes-Benz', 'Japonia i pozostali producenci'],
+              rows: [
+                ['Stały napęd 4x4 (silnik wzdłużnie)', 'quattro z międzyosiowym mechanizmem różnicowym Torsen (typ C) lub przekładnią koronową (Audi A4, A6, A8, Q5, Q7) / quattro ultra', 'BMW xDrive (rozdzielacz ATC z wielopłytkowym sprzęgłem sterowanym serwomotorem – domyślnie ok. 40:60 przód/tył) | Mercedes 4MATIC (planetarny centralny dyferencjał)', 'Subaru Symmetrical AWD (stały napęd z wiskozą lub sprzęgłem wielopłytkowym MPT/VTD + silnik Boxer w osi symetrii podwozia)'],
+                ['Dołączany napęd 4x4 (silnik poprzecznie)', 'quattro (w Audi A3, Q2, Q3, TT) = 4MOTION (VW Golf, Tiguan, Passat) = 4x4 (Škoda Octavia, Superb, Kodiaq) – wszystkie wykorzystują sprzęgło wielopłytkowe HALDEX (Gen. I–VI) przy tylnym moście!', 'BMW xDrive na platformie UKL (X1 F48, X2, Seria 1 F40, Mini ALL4) oraz Mercedes 4MATIC w Klasie A/B/CLA/GLA – wykorzystują dołączaną oś tylną przez sprzęgło elektrohydrauliczne (Haldex/BorgWarner)', 'Toyota E-Four (w hybrydach RAV4, Yaris Cross, Corolla Cross tylną oś napędza niezależny silnik elektryczny MGR bez wału napędowego!) | Suzuki AllGrip'],
+                ['Dwusprzęgłowe skrzynie biegów (DCT)', 'DSG (VW, Škoda, Seat) = S-tronic (Audi) = PDK (Porsche). Odmiany: DQ200 (7b suche sprzęgła do 250 Nm), DQ250 (6b mokre), DQ381 / DQ500 (7b mokre), DL501 (wzdłużna Audi)', 'BMW M-DCT (7-biegowa Getrag w modelach M) / Steptronic DCT (7b w autach przednionapędowych UKL) | Mercedes 7G-DCT / 8G-DCT (Klasa A, B, CLA, GLA)', 'Ford PowerShift (Getrag 6DCT450 mokra / 6DCT250 sucha), Renault EDC, Hyundai/Kia DCT, Alfa Romeo TCT'],
+                ['Klasyczne automaty hydrokinetyczne i e-CVT', 'Tiptronic (w Audi A6/A8/Q7 oraz VW Touareg – 8-biegowa skrzynia planetarna ZF 8HP lub Aisin z przemiennikiem momentu obrotowego)', 'BMW Steptronic (słynna 8-biegowa skrzynia ZF 8HP45/50/70/75) | Mercedes 7G-Tronic (722.9) oraz 9G-Tronic (725.0 własnej konstrukcji Mercedesa)', 'Toyota/Lexus e-CVT (przekładnia planetarna PSD łącząca silnik spalinowy z MG1 i MG2 – brak pasów i stożków!) | Peugeot/Citroën/Opel EAT8 (8-biegowy Aisin)']
+              ]
+            }
+          },
+          {
+            heading: '3. Różnice w układach oczyszczania spalin Diesla według marek (Suchy DPF vs Mokry FAP + AdBlue SCR)',
+            content:
+              'Podczas diagnostyki zapchanego filtra cząstek stałych mechanik musi rozróżnić dwa systemy stosowane przez producentów:',
+            bullets: [
+              'Suchy filtr DPF (Grupa VAG, BMW, Mercedes, Opel, Toyota, Renault): dopalanie sadzy wymaga podniesienia temperatury spalin do ok. 600–650°C poprzez dotrysk paliwa w fazie wydechu (post-injection). Częste przerywanie wypalania w jeździe miejskiej powoduje spływanie niespalonego oleju napędowego po ściankach cylindrów i PRZYBYWANIE stanu oleju silnikowego (ryzyko rozbiegania silnika!).',
+              'Mokry filtr FAP z dodatkiem katalitycznym Eolys (Peugeot, Citroën, DS oraz wybrane modele Forda 1.6/2.0 TDCi, Volvo D2/D3/D4 i Mazdy Y6): pod podwoziem przy zbiorniku paliwa znajduje się dodatkowy zbiornik płynu katalitycznego Eolys (Infineum / Powerflex) opartego na związkach ceru lub żelaza. Pompka dozuje dawkę płynu do baku po każdym tankowaniu. Dodatek obniża temperaturę zapłonu sadzy z 600°C do ok. 450°C, dzięki czemu filtr FAP znacznie lepiej znosi jazdę miejską, ale po ok. 120–180 tys. km wymaga uzupełnienia płynu Eolys i wyzerowania licznika dodatku testerem!',
+              'Układ SCR z płynem AdBlue (roztwór mocznika 32,5% w wodzie demineralizowanej, np. BlueHDi, BlueTEC, TDI SCR): wtryskuje AdBlue przed katalizatorem SCR w celu redukcji tlenków azotu (NOx) do nieszkodliwego azotu (N2) i pary wodnej (H2O). Płyn AdBlue krystalizuje w kontakcie z powietrzem i zamarza w temperaturze -11°C (dlatego zbiornik i przewody są podgrzewane elektrycznie).'
+            ]
+          }
+        ],
+        examTip:
+          'Wskazówka serwisowa i egzaminacyjna: W układzie mokrego filtra FAP (Peugeot/Citroën/Ford) po uzupełnieniu płynu katalitycznego Eolys poziom NIE podniesie się sam w sterowniku (zbiornik nie ma pływaka pomiarowego – sterownik zlicza wtryśnięte dawki). Konieczne jest wykonanie procedury „Zerowanie licznika dodatku do paliwa” w testerze diagnostycznym!',
+        quiz: [
+          {
+            question: 'Jak nazywa się w samochodach marki Audi z poprzecznie umieszczonym silnikiem (np. Audi A3, Q3, TT) układ dołączanego napędu na cztery koła, który konstrukcyjnie jest tożsamy z układem 4MOTION w Volkswagenie Golfie i wykorzystuje wielopłytkowe sprzęgło Haldex przy tylnej osi?',
+            options: [
+              'quattro (w odmianie ze sprzęgłem wielopłytkowym Haldex)',
+              'xDrive ze skrzynią rozdzielczą ATC',
+              'Symmetrical AWD z silnikiem typu Boxer',
+              'E-Four z niezależnym silnikiem elektrycznym przy tylnej osi'
+            ],
+            correctIndex: 0,
+            explanation: 'Audi używa handlowej nazwy „quattro” zarówno dla stałego napędu z mechanizmem Torsen (w autach z silnikiem wzdłużnym, jak A4/A6), jak i dla dołączanego napędu ze sprzęgłem Haldex (w autach z silnikiem poprzecznym na płycie MQB, jak A3/Q3).'
+          },
+          {
+            question: 'Jaka jest główna rola płynu katalitycznego Eolys dozowanego do zbiornika paliwa w układach mokrego filtra cząstek stałych FAP (stosowanych m.in. w samochodach Peugeot i Citroën HDi)?',
+            options: [
+              'Podnosi liczbę oktanową benzyny o 15 jednostek',
+              'Obniża temperaturę zapłonu i dopalania cząstek sadzy w filtrze FAP z ok. 600°C do ok. 450°C',
+              'Zastępuje olej silnikowy podczas zimnego rozruchu',
+              'Służy do smarowania pompy wysokiego ciśnienia z zewnątrz'
+            ],
+            correctIndex: 1,
+            explanation: 'Związki ceru/żelaza zawarte w dodatku Eolys wiążą się z cząstkami sadzy już w komorze spalania i obniżają temperaturę ich utleniania w filtrze FAP do ok. 450°C, co ułatwia regenerację filtra w ruchu miejskim.'
           }
         ]
       }
@@ -1768,12 +1965,13 @@ export const CATEGORIES = [
       {
         id: 'odczyt-kodow-bledow-obd',
         title: 'Odczyt kodów błędów (OBD)',
-        subtitle: 'Standard OBD-II / EOBD, gniazdo DLC 16-pinowe, struktura pięcioznakowego kodu usterki DTC (P, C, B, U), zamrożone ramki i parametry bieżące.',
-        readingTime: '7 min',
+        subtitle: 'Standard OBD-II / EOBD, gniazdo DLC 16-pinowe, struktura pięcioznakowego kodu usterki DTC (P, C, B, U), zamrożone ramki, parametry bieżące i testery fabryczne OEM.',
+        readingTime: '10 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
           'obd', 'obd2', 'eobd', 'dtc', 'kod błędu', 'gniazdo diagnostyczne', 'dlc',
-          'check engine', 'mil', 'p0', 'c0', 'b0', 'u0', 'zamrożone ramki', 'live data', 'kasowanie błędów'
+          'check engine', 'mil', 'p0', 'c0', 'b0', 'u0', 'zamrożone ramki', 'live data', 'kasowanie błędów',
+          'vcds', 'odis', 'ista', 'xentry', 'diagbox', 'clip', 'techstream', 'forscan'
         ],
         summary:
           'System diagnostyki pokładowej OBD-II / EOBD na bieżąco monitoruje podzespoły wpływające na emisję spalin oraz bezpieczeństwo jazdy. W razie wykrycia nieprawidłowości zapisuje w pamięci sterownika ustandaryzowany 5-znakowy kod usterki DTC (Diagnostic Trouble Code).',
@@ -1814,6 +2012,23 @@ export const CATEGORIES = [
               'Przejdź do podglądu Parametrów Bieżących (Live Data) i porównaj wskazania badanego czujnika z rzeczywistością (np. czy na zimnym silniku po nocy czujnik temperatury płynu ECT pokazuje temperaturę otoczenia, czy np. -40°C wskazujące na przerwę w wiązce).',
               'Zweryfikuj wiązkę elektryczną i sam element multimetrem lub oscyloskopem, usuń przyczynę usterki i dopiero na końcu skasuj pamięć błędów oraz wykonaj jazdę próbną.'
             ]
+          },
+          {
+            heading: '4. Wykaz fabrycznych testerów i oprogramowania diagnostycznego OEM według marek',
+            content:
+              'Oprócz uniwersalnych testerów wielomarkowych (np. Bosch KTS, Gutmann Mega Macs, Launch, Autel, Texa), autoryzowane serwisy (ASO) i wyspecjalizowane warsztaty korzystają z oprogramowania fabrycznego OEM umożliwiającego kodowanie, adaptacje online i aktualizacje sterowników:',
+            table: {
+              headers: ['Koncern / Marka', 'Tester fabryczny ASO (OEM) / Interfejs warsztatowy', 'Typowe procedury specjalne wymagające testera w danej marce'],
+              rows: [
+                ['Grupa VAG (VW, Audi, Škoda, Seat)', 'ODIS Service / Engineering (dawniej VAS-PC) + popularny warsztatowy VCDS (VAG-COM) / OBDeleven', 'Nastawy podstawowe (Basic Settings – grupa 04, np. adaptacja przepustnicy i skrzyni DSG), kodowanie długie (Long Coding), odblokowanie bramki ochrony komponentu SFD'],
+                ['BMW / Mini', 'ISTA+ / ISTA-D (diagnostyka) oraz ISTA-P / E-Sys (programowanie); starsze: INPA / DIS', 'Rejestracja wymiany akumulatora w systemie IBS, nauka skrajnych położeń wałka Valvetronic, kalibracja skrzyni rozdzielczej xDrive (VTG)'],
+                ['Mercedes-Benz / Smart', 'XENTRY Diagnosis / DAS (Star Diagnosis) + Vediamo / DTS Monaco', 'Dezaktywacja i aktywacja układu hamulcowego SBC (W211), kalibracja poziomu zawieszenia AIRMATIC (Romess), dopalanie DPF i reset AdBlue'],
+                ['Stellantis (Peugeot, Citroën, Opel, Fiat)', 'DiagBox (dawniej Lexia 3 dla Citroëna i Peugeot Planet 2000) | Opel: GDS2 / Tech2 / OP-COM | Fiat/Alfa: Examiner / WiTECH / MultiECUScan', 'Zerowanie licznika dodatku katalitycznego Eolys po dolaniu płynu do FAP, osiowanie Proxi (Proxy Alignment) w autach Fiat/Alfa po wymianie modułu CAN'],
+                ['Renault / Dacia', 'Renault CAN Clip (oraz nowszy Alliance ADT)', 'Kodowanie 6-/7-znakowych kodów IMA wtryskiwaczy 1.5/1.6/2.0 dCi, przyuczanie kart Hands-Free, tryb serwisowy tylnych zacisków EPB'],
+                ['Ford / Mazda', 'Ford IDS / FDRS (oraz warsztatowy FORScan) | Mazda IDS / MDARS', 'Reset wskaźnika degradacji oleju po wymianie, wypalanie statyczne DPF, kalibracja dwusprzęgłowej skrzyni PowerShift'],
+                ['Toyota / Lexus / Honda', 'Toyota Techstream (GTS) | Honda HDS (Honda Diagnostic System)', 'Diagnostyka baterii trakcyjnej NiMH/Li-Ion w układach hybrydowych HSD, odpowietrzanie pompy hamulcowej ECB w Priusie/Corolli Hybrid']
+              ]
+            }
           }
         ],
         examTip:

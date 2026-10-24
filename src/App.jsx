@@ -28,7 +28,8 @@ import {
   BatteryChecker,
   ObdDecoder,
   AcPressureSimulator,
-  NtcAndCanSimulator
+  NtcAndCanSimulator,
+  BrandSystemExplorer
 } from './components/InteractiveTools';
 import TechnicalDiagram from './components/TechnicalDiagrams';
 
@@ -242,6 +243,8 @@ export default function App() {
         return <AcPressureSimulator />;
       case 'ntc-can-simulator':
         return <NtcAndCanSimulator />;
+      case 'brand-system-explorer':
+        return <BrandSystemExplorer />;
       default:
         return null;
     }
