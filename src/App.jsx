@@ -30,6 +30,7 @@ import {
   AcPressureSimulator,
   NtcAndCanSimulator
 } from './components/InteractiveTools';
+import TechnicalDiagram from './components/TechnicalDiagrams';
 
 const CATEGORY_ICONS = {
   ShieldAlert,
@@ -705,6 +706,9 @@ export default function App() {
                   {activeTopic.summary}
                 </p>
               </div>
+
+              {/* Technical Schematic / Exploded Assembly Diagram ("Montażówka") */}
+              <TechnicalDiagram key={activeTopic.id} topicId={activeTopic.id} />
 
               {/* Optional Interactive Workshop Calculator / Simulator */}
               {activeTopic.interactiveTool &&
