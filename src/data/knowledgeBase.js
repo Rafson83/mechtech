@@ -497,11 +497,11 @@ export const CATEGORIES = [
   },
   {
     id: 'elektrotechnika',
-    name: 'Elektrotechnika',
+    name: 'Elektrotechnika i Elektronika',
     shortName: 'Elektro',
     icon: 'Zap',
     code: 'DZIAŁ III',
-    description: 'Podstawowe prawa elektrotechniki samochodowej, pomiary multimetrem, diagnostyka akumulatora rozruchowego i układu ładowania.',
+    description: 'Prawa elektrotechniki, diagnostyka akumulatora, alternatora i rozrusznika oraz czujniki elektroniczne, sterowniki ECU i sieci CAN/LIN.',
     topics: [
       {
         id: 'prawo-ohma',
@@ -736,6 +736,159 @@ export const CATEGORIES = [
             explanation: 'Aby prąd płynął z alternatora do akumulatora (12,6 V), napięcie ładowania musi być wyższe od napięcia spoczynkowego akumulatora i mieścić się w przedziale 13,8–14,5 V.'
           }
         ]
+      },
+      {
+        id: 'uklad-rozruchu-rozrusznik',
+        title: 'Układ rozruchu (Rozrusznik)',
+        subtitle: 'Budowa rozrusznika z przekładnią planetarną, działanie wyłącznika elektromagnetycznego, sprzęgło jednokierunkowe (bendiks) i oznaczenia zacisków 30, 50, 45.',
+        readingTime: '8 min',
+        examFrequency: 'Bardzo wysoka',
+        keywords: [
+          'rozrusznik', 'bendiks', 'elektromagnes', 'automat rozrusznika', 'komutator',
+          'przekładnia planetarna', 'zacisk 30', 'zacisk 50', 'prąd rozruchu', 'szczotki', 'wieniec koła zamachowego'
+        ],
+        summary:
+          'Rozrusznik jest silnikiem elektrycznym prądu stałego (szeregowym, bocznikowym lub z magnesami trwałymi), który pobiera z akumulatora prąd od 150 A do ponad 400 A, aby nadać wałowi korbowemu minimalną prędkość rozruchową (ok. 60–100 obr./min dla silników ZI oraz 100–200 obr./min dla silników ZS).',
+        sections: [
+          {
+            heading: '1. Budowa rozrusznika i rola wyłącznika elektromagnetycznego',
+            content:
+              'Rozrusznik składa się z trzech głównych zespołów: silnika elektrycznego prądu stałego, mechanizmu sprzęgającego (bendiksu) oraz wyłącznika elektromagnetycznego („automatu”):',
+            table: {
+              headers: ['Podzespół rozrusznika', 'Budowa i cechy charakterystyczne', 'Zadanie podczas rozruchu'],
+              rows: [
+                ['Wyłącznik elektromagnetyczny (elektromagnes)', 'Dwa uzwojenia: wciągające i podtrzymujące oraz rdzeń ruchomy ze stykami głównymi', '1) Przesuwa widełkami zębnik w stronę wieńca koła zamachowego, 2) Zwierając styki główne (30 i 45), podaje pełny prąd na wirnik'],
+                ['Mechanizm sprzęgający (Bendiks)', 'Zębnik z rolkowym sprzęgłem jednokierunkowym (wolnobiegiem) osadzony na wielowypuście śrubowym', 'Przenosi napęd wyłącznie od rozrusznika do silnika. Po uruchomieniu silnika chroni wirnik rozrusznika przed rozerwaniem przez wysokie obroty wału!'],
+                ['Wirnik (twornik) z komutatorem', 'Uzwojenia z grubego płaskownika miedzianego lutowane do wycinków komutatora + szczotki miedziano-grafitowe', 'Wytwarza moment obrotowy pod wpływem przepływu prądu o bardzo dużym natężeniu'],
+                ['Przekładnia planetarna (reduktor)', 'Koło słoneczne na wirniku, 3 satelity w jarzmie i koło pierścieniowe o uzębieniu wewnętrznym', 'Zmniejsza obroty wirnika (przełożenie ok. 4:1), a jednocześnie czterokrotnie zwiększa moment obrotowy przy mniejszej masie rozrusznika']
+              ]
+            }
+          },
+          {
+            heading: '2. Oznaczenia zacisków elektrycznych rozrusznika (wg normy DIN 72552)',
+            content:
+              'Na pokrywie wyłącznika elektromagnetycznego rozrusznika znajdują się trzy zaciski o znormalizowanych numerach:',
+            bullets: [
+              'Zacisk 30 (śruba M8): stałe zasilanie +12 V podłączone grubym, niezabezpieczonym bezpiecznikiem przewodem bezpośrednio z dodatniej klemy akumulatora.',
+              'Zacisk 50 (wsuwka lub śrubka M5/M6): sygnał sterujący +12 V podawany ze stacyjki lub przekaźnika rozruchu w momencie przekręcenia kluczyka w pozycję START.',
+              'Zacisk 45 (lub C): wyjście prądowe z wyłącznika elektromagnetycznego wchodzące przez plecionkę miedzianą do wnętrza stojana/szczotek rozrusznika.'
+            ]
+          },
+          {
+            heading: '3. Diagnostyka typowych usterek układu rozruchu',
+            content:
+              'Podczas próby rozruchu napięcie na zaciskach akumulatora nie powinno spadać poniżej 9,6 V – 10,0 V:',
+            bullets: [
+              'Słychać głośne „stuknięcie” elektromagnesu, ale rozrusznik nie kręci, a kontrolki przygasają: rozładowany akumulator, duży spadek napięcia na skorodowanej klemie/masie silnika lub zwarcie w wirniku.',
+              'Rozrusznik obraca się z bardzo dużą prędkością („wyje”), ale wał korbowy silnika stoi w miejscu: uszkodzone sprzęgło jednokierunkowe (ślizgający się bendiks) lub wyłamane zęby wieńca koła zamachowego.',
+              'Brak jakiejkolwiek reakcji po przekręceniu kluczyka (kontrolki nie przygasają): brak napięcia na zacisku 50 (uszkodzona kostka stacyjki, czujnik wciśnięcia sprzęgła/pozycji P-N) lub zawieszone szczotki węglowe (przez co uzwojenie wciągające elektromagnesu nie ma masy przez wirnik!).'
+            ]
+          }
+        ],
+        examTip:
+          'Ważny szczegół konstrukcyjny na egzamin MOT.05: uzwojenie WCIĄGAJĄCE elektromagnesu rozrusznika zamyka swój obwód do masy PRZEZ UZWOJENIE WIRNIKA i szczotki. Dlatego gdy szczotki rozrusznika całkowicie się zużyją (zawieszą), elektromagnes nawet nie wyrzuci bendiksu!',
+        quiz: [
+          {
+            question: 'Jaką funkcję pełni sprzęgło jednokierunkowe (tzw. bendiks) w mechanizmie sprzęgającym rozrusznika?',
+            options: [
+              'Zwiększa napięcie zasilania z 12 V do 24 V w chwili zimnego rozruchu',
+              'Przenosi moment obrotowy z rozrusznika na koło zamachowe i zapobiega napędzaniu wirnika rozrusznika przez uruchomiony silnik spalinowy',
+              'Prostuje prąd przemienny na prąd stały podczas hamowania silnikiem',
+              'Ogranicza maksymalne natężenie prądu na zacisku 50 do 5 A'
+            ],
+            correctIndex: 1,
+            explanation: 'Gdy silnik spalinowy zaskoczy, jego prędkość obrotowa gwałtownie rośnie. Wolnobieg (bendiks) rozpina wówczas sprzężenie, chroniąc wirnik rozrusznika przed rozpadnięciem się od siły odśrodkowej.'
+          },
+          {
+            question: 'Który zacisk na elektromagnesie rozrusznika otrzymuje napięcie sterujące +12 V ze stacyjki w chwili przekręcenia kluczyka w pozycję „Rozruch”?',
+            options: [
+              'Zacisk 30',
+              'Zacisk 31',
+              'Zacisk 50',
+              'Zacisk B+'
+            ],
+            correctIndex: 2,
+            explanation: 'Zgodnie z normą DIN 72552 zacisk 30 to stały plus z akumulatora, 31 to masa, a zacisk 50 to obwód sterowania rozrusznikiem (sygnał START).'
+          }
+        ]
+      },
+      {
+        id: 'czujniki-i-elektronika-silnikowa',
+        title: 'Czujniki i elektronika (ECU, CAN)',
+        subtitle: 'Termistory NTC i PTC, przepływomierze MAF i czujniki MAP, czujniki piezoelektryczne, sondy lambda, wtryskiwacze oraz magistrala CAN-BUS i LIN.',
+        readingTime: '9 min',
+        examFrequency: 'Bardzo wysoka',
+        keywords: [
+          'elektronika', 'czujnik', 'ntc', 'ptc', 'ect', 'maf', 'map', 'piezoelektryczny',
+          'spalanie stukowe', 'can', 'magistrala can', '60 om', '120 om', 'lin', 'ecu', 'wtryskiwacz'
+        ],
+        summary:
+          'Współczesny samochód sterowany jest przez rozproszoną sieć sterowników mikroprocesorowych (ECU, ABS, BCM, TCU) komunikujących się po cyfrowej magistrali CAN/LIN. Sterowniki zbierają informacje z czujników (sensorów) i wysterowują elementy wykonawcze (aktuatory).',
+        interactiveTool: 'ntc-can-simulator',
+        sections: [
+          {
+            heading: '1. Klasyfikacja i charakterystyka czujników samochodowych',
+            content:
+              'Mechanik diagnozujący układ sterowania silnikiem musi znać zasadę działania i typowe wartości pomiarowe głównych czujników:',
+            table: {
+              headers: ['Czujnik (Sensor)', 'Zasada działania', 'Charakterystyka sygnału i diagnostyka'],
+              rows: [
+                ['Czujnik temp. cieczy (ECT) i powietrza (IAT)', 'Termistor NTC (Negative Temperature Coefficient – ujemny współczynnik temperaturowy)', 'Wraz ze wzrostem temperatury jego rezystancja MALEJE (np. w 20°C ok. 2,5 kΩ, a w 80°C ok. 300 Ω). Odpięta wtyczka = sterownik widzi -40°C!'],
+                ['Czujnik ciśnienia w kolektorze (MAP) / na listwie (Rail)', 'Tensometryczny (piezorezystancyjny) zasilany napięciem odniesienia 5,0 V', '3 piny (Masa, Zasilanie 5 V, Sygnał 0,5–4,5 V rosnący liniowo wraz z ciśnieniem)'],
+                ['Przepływomierz masowy powietrza (MAF)', 'Termoanemometryczny (gorąca warstwa / drut – Hot Film) lub cyfrowy HFM', 'Mierzy masę zasysanego powietrza [kg/h lub g/s]. Zabrudzenie elementu pomiarowego zaniża dawkę paliwa i ogranicza moc'],
+                ['Czujnik spalania stukowego (Knock Sensor)', 'Piezoelektryczny (pasywny – sam generuje napięcie pod wpływem drgań bloku)', 'Wykrywa detonacyjne spalanie i pozwala ECU opóźnić kąt wyprzedzenia zapłonu. Wymaga dokręcenia ściśle określonym momentem (np. 20 Nm)!'],
+                ['Czujnik położenia pedału przyspieszenia (APP)', 'Podwójny potencjometr lub podwójny czujnik Halla (6 pinów)', 'Dwa niezależne tory sygnałowe dla bezpieczeństwa (np. Tor 1: 0,5–4,5 V, a Tor 2 dokładnie połowa: 0,25–2,25 V)']
+              ]
+            }
+          },
+          {
+            heading: '2. Elementy wykonawcze (Aktuatory): Wtryskiwacze elektromagnetyczne i piezoelektryczne',
+            content:
+              'Sterownik silnika (ECU) steruje elementami wykonawczymi najczęściej od strony masy (podając impulsy masowe PWM przy stałym zasilaniu +12 V):',
+            bullets: [
+              'Wtryskiwacze pośrednie benzynowe (MPI): wysokoomowe cewki elektromagnetyczne (rezystancja 12 – 16 Ω), zasilane napięciem 12 V.',
+              'Wtryskiwacze bezpośrednie (FSI/GDI oraz Common Rail elektromagnetyczne): niskoomowe cewki (ok. 0,3 – 2,5 Ω) wyzwalane początkowym prądem uderzeniowym o napięciu podbitym w przetwornicy ECU do 50 – 90 V!',
+              'Wtryskiwacze piezoelektryczne Common Rail: wykorzystują stos kryształów piezoelektrycznych (działają nawet 4 razy szybciej niż elektromagnetyczne). Rezystancja sprawnego stosu piezo wynosi ok. 150 – 200 kΩ, a napięcie sterowania sięga 110 – 200 V. UWAGA BHP: zakaz odpinania wtyczek wtryskiwaczy piezoelektrycznych na pracującym silniku (ryzyko porażenia prądem i zablokowania wtryskiwacza w pozycji otwartej)!'
+            ]
+          },
+          {
+            heading: '3. Cyfrowe sieci komunikacyjne: Magistrala CAN-BUS i LIN-BUS',
+            content:
+              'Aby wyeliminować kilometry przewodów, sterowniki wymieniają dane cyfrowo za pomocą dwuprzewodowej skrętki CAN lub jednoprzewodowej sieci LIN:',
+            bullets: [
+              'Magistrala CAN (Controller Area Network): dwuprzewodowa skrętka (CAN-High oraz CAN-Low) przesyłająca sygnał różnicowy odporny na zakłócenia elektromagnetyczne.',
+              'W szybkiej sieci napędowej CAN High-Speed (500 kbps) w stanie spoczynku (recesywnym) na obu liniach panuje ok. 2,5 V. Podczas nadawania bitu dominującego napięcie CAN-High rośnie do 3,5 V, a CAN-Low spada do 1,5 V (symetryczne odbicie lustrzane!).',
+              'Rezystancja terminacji magistrali CAN: na dwóch końcach głównej magistrali znajdują się dwa rezystory terminujące po 120 Ω połączone równolegle. Pomiar omomierzem między pinem 6 (CAN-H) a pinem 14 (CAN-L) w gnieździe OBD przy odłączonym akumulatorze musi wykazać dokładnie 60 Ω!',
+              'Magistrala LIN (Local Interconnect Network): tania, jednoprzewodowa sieć podrzędna (12 V, prędkość do 20 kbps) łącząca sterownik główny (Master) z elementami wykonawczymi (Slave), np. alternatorem, silniczkami wycieraczek, czujnikiem deszczu czy klapami nawiewów.'
+            ]
+          }
+        ],
+        examTip:
+          'Dwa pewniaki egzaminacyjne z elektroniki MOT.05: 1) Czujnik temperatury cieczy chłodzącej to termistor NTC – gdy silnik się rozgrzewa, jego opór MALEJE. 2) Pomiar rezystancji sprawnej magistrali CAN (dwa rezystory 120 Ω równolegle) daje zawsze 60 Ω. Jeśli miernik pokaże 120 Ω – jeden z rezystorów końcowych jest odłączony (przerwa w wiązce)!',
+        quiz: [
+          {
+            question: 'Jak zmienia się rezystancja czujnika temperatury płynu chłodzącego typu NTC wraz ze wzrostem temperatury silnika?',
+            options: [
+              'Rezystancja rośnie liniowo od 100 Ω do 100 kΩ',
+              'Rezystancja maleje nieliniowo wraz ze wzrostem temperatury',
+              'Rezystancja pozostaje stała i wynosi zawsze 60 Ω',
+              'Czujnik NTC nie zmienia rezystancji, lecz wytwarza prąd trójfazowy'
+            ],
+            correctIndex: 1,
+            explanation: 'NTC (Negative Temperature Coefficient) oznacza ujemny współczynnik temperaturowy – im wyższa temperatura, tym mniejszy opór elektryczny półprzewodnika.'
+          },
+          {
+            question: 'Jaką wartość rezystancji powinien wskazać omomierz podłączony pomiędzy linię CAN-High (pin 6) a linię CAN-Low (pin 14) sprawnej magistrali CAN High-Speed przy odłączonym zasilaniu?',
+            options: [
+              'Ok. 60 Ω (dwa rezystory terminujące po 120 Ω połączone równolegle)',
+              'Ok. 240 Ω (dwa rezystory po 120 Ω połączone szeregowo)',
+              '0 Ω (pełne zwarcie obu przewodów)',
+              'Nieskończoność (OL)'
+            ],
+            correctIndex: 0,
+            explanation: 'Na obu końcach szyny CAN znajdują się rezystory 120 Ω zapobiegające odbiciom fal sygnałowych. Ponieważ są połączone równolegle, wypadkowa rezystancja wynosi 120 Ω / 2 = 60 Ω.'
+          }
+        ]
       }
     ]
   },
@@ -745,8 +898,168 @@ export const CATEGORIES = [
     shortName: 'Budowa',
     icon: 'Car',
     code: 'DZIAŁ IV',
-    description: 'Konstrukcja i zasada działania mechanizmów silnika (układ rozrządu), układów jezdnych i zawieszenia oraz hydraulicznych układów hamulcowych.',
+    description: 'Rodzaje silników, układ korbowo-tłokowy (korbowody) i rozrządu, układ chłodzenia, klimatyzacji, układy zawieszenia oraz układy hamulcowe.',
     topics: [
+      {
+        id: 'rodzaje-silnikow',
+        title: 'Rodzaje silników',
+        subtitle: 'Podział silników spalinowych (ZI vs ZS, 4-suwowe vs 2-suwowe), układy cylindrów (R, V, Boxer, W), stopień sprężania, doładowanie oraz napędy hybrydowe.',
+        readingTime: '9 min',
+        examFrequency: 'Bardzo wysoka',
+        keywords: [
+          'rodzaje silników', 'silnik spalinowy', 'zapłon iskrowy', 'zapłon samoczynny', 'diesel',
+          'czterosuwowy', 'rzędowy', 'widlasty', 'boxer', 'stopień sprężania', 'kolejność zapłonów', 'hybryda'
+        ],
+        summary:
+          'Silnik spalinowy tłokowy zamienia energię chemiczną paliwa na energię cieplną podczas spalania w cylindrze, a następnie za pośrednictwem układu korbowo-tłokowego przekształca ją w pracę mechaniczną (moment obrotowy na wale korbowym).',
+        sections: [
+          {
+            heading: '1. Podział silników ze względu na rodzaj zapłonu i obieg cieplny (ZI vs ZS)',
+            content:
+              'W motoryzacji stosuje się dwie podstawowe grupy tłokowych silników spalinowych różniące się sposobem tworzenia mieszanki i inicjacji zapłonu:',
+            table: {
+              headers: ['Cecha porównawcza', 'Silnik o zapłonie iskrowym (ZI – obieg Otta)', 'Silnik o zapłonie samoczynnym (ZS – obieg Diesla/Sabathé)'],
+              rows: [
+                ['Stosowane paliwo', 'Benzyna bezołowiowa (PB95/98), LPG, CNG', 'Olej napędowy (ON – charakteryzowany liczbą cetanową)'],
+                ['Co jest zasysane w suwie ssania?', 'Mieszanka paliwowo-powietrzna (MPI) lub czyste powietrze (wtrysk bezpośredni GDI/FSI)', 'Wyłącznie czyste powietrze (często sprężone przez turbosprężarkę)'],
+                ['Sposób inicjacji zapłonu', 'Wymuszony przeskokiem iskry elektrycznej na elektrodach świecy zapłonowej', 'Samozapłon rozpylonego pod wysokim ciśnieniem (do 2500 bar) oleju napędowego od gorącego, sprężonego powietrza (700–900°C)'],
+                ['Stopień sprężania (ε)', 'Niższy: zazwyczaj od 9,5:1 do 12,5:1 (ograniczony ryzykiem spalania stukowego)', 'Wysoki: zazwyczaj od 15,0:1 do 19,5:1 (niezbędny do uzyskania temperatury samozapłonu)'],
+                ['Ciśnienie sprężania (kompresja)', 'Ok. 1,0 – 1,4 MPa (10 – 14 bar)', 'Ok. 2,5 – 3,5 MPa (25 – 35 bar)']
+              ]
+            }
+          },
+          {
+            heading: '2. Podział ze względu na układ konstrukcyjny cylindrów',
+            content:
+              'Rozmieszczenie cylindrów w kadłubie wpływa na wymiary zewnętrzne silnika, położenie środka ciężkości oraz wyrównoważenie sił bezwładności:',
+            table: {
+              headers: ['Układ cylindrów', 'Oznaczenie', 'Budowa i właściwości eksploatacyjne'],
+              rows: [
+                ['Rzędowy (In-line)', 'R3, R4, R5, R6', 'Wszystkie cylindry ustawione w jednym rzędzie (w jednej płaszczyźnie). Najprostsza budowa (jedna głowica). Najczęstsza kolejność pracy silnika R4: 1–3–4–2'],
+                ['Widlasty (V-engine)', 'V6, V8, V10, V12', 'Cylindry rozmieszczone w dwóch rzędach rozchylonych pod kątem (najczęściej 60° lub 90°) ze wspólnym wałem korbowym. Krótki i zwarty kadłub, dwie głowice'],
+                ['Przeciwsobny (Boxer)', 'B4, B6', 'Kąt rozchylenia cylindrów wynosi 180°, a każda para tłoków ma osobne wykorbienia i porusza się jednocześnie ku sobie i od siebie (jak rękawice boksera). Bardzo niski środek ciężkości i doskonałe wyważenie'],
+                ['Wąskokątny / układ W', 'VR6, W8, W12', 'Cylindry przesunięte względem siebie o mały kąt (np. 15° w VR6 z jedną wspólną głowicą) lub kombinacja dwóch bloków VR tworząca układ W']
+              ]
+            }
+          },
+          {
+            heading: '3. Pojemność skokowa, stopień sprężania i nowoczesne układy hybrydowe',
+            content:
+              'Podstawowe parametry geometryczne cylindra oraz klasyfikacja zelektryfikowanych układów napędowych:',
+            formula: {
+              expression: 'ε = (V_s + V_k) / V_k',
+              description: 'gdzie: ε – geometryczny stopień sprężania (liczba niemianowana), V_s – pojemność skokowa jednego cylindra (między DMP a GMP), V_k – pojemność komory spalania (nad tłokiem w GMP).'
+            },
+            bullets: [
+              'MHEV (Mild Hybrid – miękka hybryda 48 V): maszyna elektryczna BSG/ISG wspomaga silnik spalinowy przy ruszaniu i odzyskuje energię hamowania, ale nie napędza auta samodzielnie na dłuższym dystansie.',
+              'HEV (Full Hybrid – pełna hybryda): umożliwia ruszanie i jazdę wyłącznie na silniku elektrycznym na krótkich odcinkach; akumulator trakcyjny ładuje się wyłącznie z rekuperacji i pracy silnika spalinowego.',
+              'PHEV (Plug-in Hybrid): hybryda z dużym akumulatorem trakcyjnym ładowanym z zewnętrznego gniazdka/ładowarki AC, pozwalająca przejechać 50–100 km w trybie czysto elektrycznym.'
+            ]
+          }
+        ],
+        examTip:
+          'Nie myl na egzaminie MOT.05 dwóch pojęć: STOPIEŃ SPRĘŻANIA (ε) to wielkość geometryczna niemianowana (stosunek objętości, np. 10,5:1), natomiast CIŚNIENIE SPRĘŻANIA (kompresja) to wielkość fizyczna mierzona manometrem w otworze świecy wyrażana w MPa lub barach (np. 1,2 MPa = 12 bar)!',
+        quiz: [
+          {
+            question: 'Jaka jest najpopularniejsza kolejność zapłonów (pracy cylindrów) w czterocylindrowym, czterosuwowym silniku rzędowym (R4)?',
+            options: [
+              '1 – 2 – 3 – 4',
+              '1 – 3 – 4 – 2',
+              '1 – 4 – 2 – 3',
+              '4 – 3 – 2 – 1'
+            ],
+            correctIndex: 1,
+            explanation: 'W silniku R4 tłoki 1 i 4 oraz 2 i 3 poruszają się współbieżnie. Aby suwy pracy następowały równomiernie co 180° obrotu wału korbowego, kolejność zapłonów wynosi 1–3–4–2 (lub rzadziej 1–2–4–3).'
+          },
+          {
+            question: 'Czym charakteryzuje się silnik w układzie przeciwsobnym typu Boxer?',
+            options: [
+              'Cylindry leżą w jednej płaszczyźnie po obu stronach wału korbowego (kąt 180°), a naprzeciwległe tłoki poruszają się zawsze w kierunkach przeciwnych (jednocześnie do GMP i jednocześnie do DMP)',
+              'Wszystkie cylindry są ustawione pionowo w jednym rzędzie',
+              'Posiada trzy wały korbowe połączone paskiem zębatym',
+              'Nie posiada korbowodów ani sworzni tłokowych'
+            ],
+            correctIndex: 0,
+            explanation: 'W silniku Boxer każdy korbowód ma własny czop na wale korbowym przesunięty o 180°, dzięki czemu tłoki przeciwległych cylindrów zbliżają się do siebie i oddalają jednocześnie, doskonale równoważąc siły bezwładności.'
+          }
+        ]
+      },
+      {
+        id: 'rodzaje-korbowodow-i-uklad-korbowy',
+        title: 'Rodzaje korbowodów i układ korbowo-tłokowy',
+        subtitle: 'Budowa korbowodu (główka, trzon, stopa), podział prosty, ukośny i łamany kruszeniowo (fracture-split), korbowody silników widlastych, panewki i sworznie.',
+        readingTime: '9 min',
+        examFrequency: 'Bardzo wysoka',
+        keywords: [
+          'korbowód', 'stopa korbowodu', 'główka korbowodu', 'korbowód łamany', 'podział ukośny',
+          'panewki', 'zamek panewki', 'sworzeń tłokowy', 'pływający', 'tłok', 'pierścienie tłokowe', 'wał korbowy'
+        ],
+        summary:
+          'Korbowód stanowi główne ogniwo łączące tłok z wałem korbowym. Zamienia ruch posuwisto-zwrotny tłoka na ruch obrotowy wału korbowego, przenosząc gigantyczne siły gazowe (ściskanie w suwie pracy) oraz siły bezwładności (rozciąganie i zginanie wyboczeniowe).',
+        sections: [
+          {
+            heading: '1. Budowa korbowodu i jego elementy składowe',
+            content:
+              'Korbowód odkuwany jest najczęściej ze stali stopowej do ulepszania cieplnego lub spiekany proszkowo. Składa się z trzech zasadniczych części:',
+            bullets: [
+              'Główka korbowodu: górna, nierozdzielna część łącząca się ze sworzniem tłokowym. W przypadku sworznia pływającego w główkę wprasowana jest tulejka brązowa smarowana rozbryzgowo lub natryskowo przez otwór olejowy.',
+              'Trzon korbowodu: część środkowa o przekroju DWUTEOWYM (zapewniającym najwyższą sztywność na wyboczenie przy minimalnej masie). Często wewnątrz trzonu wywiercony jest kanał olejowy doprowadzający olej ze stopy do główki.',
+              'Stopa korbowodu: dolna, DZIELONA część obejmująca czop korbowy wału korbowego. Składa się z części górnej (zintegrowanej z trzonem) oraz odkręcanej pokrywy stopy korbowodu, w których osadzone są dwie półpanewki ślizgowe.'
+            ]
+          },
+          {
+            heading: '2. Rodzaje korbowodów ze względu na podział stopy i konstrukcję silnika',
+            content:
+              'W zależności od technologii wytwarzania oraz średnicy cylindra i czopa wału stosuje się różne konstrukcje korbowodów:',
+            table: {
+              headers: ['Rodzaj korbowodu', 'Cechy konstrukcyjne', 'Zastosowanie i zasady montażowe'],
+              rows: [
+                ['Z podziałem prostym (prostopadłym)', 'Płaszczyzna podziału stopy jest prostopadła (90°) do osi podłużnej trzonu korbowodu', 'Silniki o mniejszych średnicach czopów korbowych (stopa bez problemu przechodzi górą przez tuleję cylindra podczas demontażu tłoka)'],
+                ['Z podziałem ukośnym (skośnym)', 'Płaszczyzna podziału stopy jest nachylona pod kątem 30° – 60° względem osi trzonu', 'Silniki wysokoprężne (ZS) i wysilone o dużych średnicach czopów wału – ukośny podział zmniejsza szerokość gabarytową stopy, umożliwiając wyjęcie tłoka z korbowodem górą przez cylinder!'],
+                ['Korbowód łamany (Fracture-split / kruszeniowy)', 'Stopa wykonywana jako jedna całość, a następnie precyzyjnie przełamywana (rozrywana) po nacięciu laserowym', 'Unikalna, krystaliczna powierzchnia przełomu zapewnia idealne spasowanie pokrywy ze stopą bez tulejek ustalających. UWAGA: pokrywy są absolutnie niewymienne i nie wolno odkładać ich powierzchnią przełomu do metalowego stołu!'],
+                ['Korbowody współbieżne (silniki V)', 'Dwa identyczne korbowody z przeciwległych rzędów cylindrów osadzone obok siebie na jednym wspólnym czopie korbowym', 'Najpopularniejsze rozwiązanie we współczesnych silnikach widlastych V6 i V8 (wymaga minimalnego przesunięcia osi cylindrów obu głowic)'],
+                ['Korbowód główny i doczepny / widełkowy', 'Jeden korbowód główny obejmuje czop wału, a drugi (doczepny) jest połączony sworzniem ze stopą głównego (lub stopa jednego jest rozwidlona)', 'Silniki widlaste o dużej mocy i silniki gwiazdowe, w których osie cylindrów obu rzędów muszą leżeć w tej samej płaszczyźnie']
+              ]
+            }
+          },
+          {
+            heading: '3. Rodzaje osadzenia sworznia tłokowego i montaż panewek korbowodowych',
+            content:
+              'Sworzeń tłokowy łączy główkę korbowodu z piastami tłoka. W praktyce warsztatowej spotyka się dwa rozwiązania:',
+            bullets: [
+              'Sworzeń pływający: obraca się swobodnie zarówno w tulejce główki korbowodu, jak i w piastach tłoka (po rozgrzaniu). Przed wysunięciem poosiowym i porysowaniem gładzi cylindra zabezpieczają go dwa sprężyste pierścienie osadcze (Segera) w rowkach tłoka.',
+              'Sworzeń zaciskowy (stały w główce korbowodu): osadzony w główce korbowodu z pasowaniem ciasnym (wciskowym – montaż po podgrzaniu główki do ok. 250–300°C), a w piastach tłoka obraca się z luzem (nie wymaga pierścieni Segera!).',
+              'Panewki korbowodowe i „zamki”: tzw. zamki (wypusty) w półpanewkach służą wyłącznie do USTALENIA POŁOŻENIA osiowego i obwodowego podczas montażu (zamek do zamka!). Przed obróceniem się panewki w stopie podczas pracy silnika chroni wyłącznie ZACISK MONTAŻOWY (odpowiedni moment i kąt dokręcenia śrub stopy korbowodu)!'
+            ]
+          }
+        ],
+        examTip:
+          'Dwa kluczowe pytania na egzaminie MOT.05: 1) Po co stosuje się ukośny podział stopy korbowodu? Aby szeroka stopa korbowodu przeszła przez mniejszą średnicę cylindra podczas demontażu tłoka do góry! 2) Śruby stopy korbowodu są śrubami plastycznymi (dokręcanymi momentem + kątem, np. 30 Nm + 90°) i przy każdej naprawie podlegają BEZWZGLĘDNEJ WYMIANIE na nowe!',
+        quiz: [
+          {
+            question: 'W jakim celu w wielu silnikach wysokoprężnych stosuje się ukośny (skośny) podział stopy korbowodu zamiast podziału prostopadłego?',
+            options: [
+              'W celu zmniejszenia wymiaru poprzecznego stopy, co umożliwia wyjęcie tłoka wraz z korbowodem górą przez otwór cylindra mimo dużej średnicy czopa wału',
+              'Aby wyeliminować konieczność stosowania panewek ślizgowych',
+              'Aby umożliwić smarowanie silnika mieszanką paliwa z olejem jak w dwusuwie',
+              'Ponieważ ukośna stopa nie wymaga skręcania śrubami'
+            ],
+            correctIndex: 0,
+            explanation: 'W silnikach o dużym obciążeniu czopy wału korbowego mają dużą średnicę. Prostopadle dzielona stopa byłaby szersza niż średnica cylindra i nie dałoby się wyjąć tłoka z korbowodem przez górną płaszczyznę bloku.'
+          },
+          {
+            question: 'Czym charakteryzuje się korbowód ze stopą dzieloną metodą łamania (kruszenia – fracture-split)?',
+            options: [
+              'Powierzchnia styku stopy z pokrywą jest idealnie wypolerowana na lustro i można zamieniać pokrywy między cylindrami',
+              'Pokrywa jest odłamywana od jednorodnego odkucia korbowodu, a chropowata struktura przełomu gwarantuje idealne, jedyne możliwe spasowanie obu części',
+              'Korbowód ten wykonany jest z tworzywa sztucznego wzmacnianego włóknem szklanym',
+              'Pokrywa stopy jest przyspawana na stałe po założeniu na wał korbowy'
+            ],
+            correctIndex: 1,
+            explanation: 'Technologia łamania stopy korbowodu tworzy niepowtarzalny mikrozarys przełomu. Pokrywy nigdy nie wolno zamieniać z innym korbowodem ani obrócić o 180°, a śruby dokręca się po nasmarowaniu czopa czystym olejem.'
+          }
+        ]
+      },
       {
         id: 'uklad-rozrzadu',
         title: 'Układ rozrządu',
@@ -824,49 +1137,206 @@ export const CATEGORIES = [
         ]
       },
       {
-        id: 'budowa-zawieszenia',
-        title: 'Budowa zawieszenia',
-        subtitle: 'Elementy wodzące, sprężyste i tłumiące, kolumna MacPhersona, zawieszenie wielowahaczowe, diagnostyka luzów i zużycia amortyzatorów.',
-        readingTime: '7 min',
-        examFrequency: 'Wysoka',
+        id: 'uklad-chlodzenia',
+        title: 'Układ chłodzenia silnika',
+        subtitle: 'Mały i duży obieg cieczy chłodzącej, budowa termostatu, pompa cieczy, korek ciśnieniowy zbiorniczka, płyny G11/G12/G13 oraz badanie refraktometrem.',
+        readingTime: '8 min',
+        examFrequency: 'Bardzo wysoka',
         keywords: [
-          'zawieszenie', 'amortyzator', 'sprężyna', 'wahacz', 'sworzeń wahacza', 'tuleja metalowo-gumowa',
-          'silentblock', 'macpherson', 'stabilizator', 'łącznik stabilizatora', 'łożysko McPhersona', 'ściągacz do sprężyn'
+          'układ chłodzenia', 'termostat', 'mały obieg', 'duży obieg', 'chłodnica', 'nagrzewnica',
+          'pompa wody', 'płyn chłodniczy', 'glikol', 'refraktometr', 'korek zbiorniczka', 'nadciśnienie'
+        ],
+        summary:
+          'Układ chłodzenia utrzymuje optymalną temperaturę pracy silnika spalinowego (ok. 85–105°C). Zbyt niska temperatura zwiększa zużycie paliwa i przyspiesza zużycie cylindrów, natomiast przegrzanie prowadzi do wydmuchania uszczelki pod głowicą (UPG) i zatarcia tłoków.',
+        sections: [
+          {
+            heading: '1. Mały i duży obieg cieczy chłodzącej oraz rola termostatu',
+            content:
+              'Aby zimny silnik po rozruchu jak najszybciej osiągnął temperaturę roboczą, układ chłodzenia podzielony jest na dwa obiegi przełączane przez termostat:',
+            table: {
+              headers: ['Obieg chłodzenia', 'Zakres temperatury cieczy', 'Droga przepływu płynu chłodniczego'],
+              rows: [
+                ['Mały obieg (krótki)', 'Zimny silnik (poniżej ok. 82–87°C)', 'Termostat ZAMKNIĘTY. Pompa tłoczy płyn tylko przez płaszcz wodny bloku, głowicę i nagrzewnicę kabiny (z pominięciem chłodnicy głównej!). Silnik szybko się nagrzewa'],
+                ['Duży obieg (pełny)', 'Rozgrzany silnik (powyżej ok. 87–92°C)', 'Wosk w mieszku termostatu rozszerza się i OTWIERA zawór główny. Gorący płyn przepływa przez chłodnicę główną, gdzie oddaje ciepło powietrzu'],
+                ['Termostat z grzałką (MAP)', 'Sterowany przez ECU (90–108°C)', 'Przy częściowym obciążeniu ECU utrzymuje wyższą temp. (105°C – niższe spalanie), a przy pełnym obciążeniu włącza grzałkę w termostacie, wymuszając wcześniejsze otwarcie (ok. 85°C)']
+              ]
+            }
+          },
+          {
+            heading: '2. Korek zbiorniczka wyrównawczego – dlaczego w układzie panuje nadciśnienie?',
+            content:
+              'Zamknięty układ chłodzenia pracuje w warunkach nadciśnienia wynoszącego zazwyczaj 0,12 – 0,15 MPa (1,2 – 1,5 bar):',
+            bullets: [
+              'Fizyczna rola nadciśnienia: podwyższenie ciśnienia o ok. 1,4 bar podnosi temperaturę wrzenia płynu chłodniczego (mieszaniny wody i glikolu) ze 106°C do ponad 120–125°C, zapobiegając kawitacji i wrzeniu punktowemu w głowicy.',
+              'W korku zbiorniczka wyrównawczego znajdują się DWA zaworki: 1) Zawór nadciśnieniowy (otwiera się powyżej 1,4 bar, chroniąc węże i chłodnicę przed rozerwaniem) oraz 2) Zawór podciśnieniowy (otwiera się podczas stygnięcia silnika, wpuszczając powietrze, aby węże gumowe się nie zapadły!).',
+              'Odkręcenie korka na gorącym silniku powoduje natychmiastowy spadek ciśnienia do atmosferycznego i gwałtowne zagotowanie (wyrzut wrzącego płynu)!'
+            ]
+          },
+          {
+            heading: '3. Płyny chłodnicze (G11, G12, G13), diagnostyka refraktometrem i próba szczelności',
+            content:
+              'Płyn eksploatacyjny to mieszanina glikolu etylenowego (lub propylenowego/gliceryny) i wody demineralizowanej w proporcji ok. 50% / 50% (temperatura krzepnięcia ok. -35°C do -37°C):',
+            steps: [
+              'Kontrola temperatury krzepnięcia płynu chłodniczego: nanieś 2 krople płynu na pryzmat refraktometru optycznego (lub użyj glikometru pływakowego) i odczytaj na skali granicę światłocienia dla glikolu etylenowego/propylenowego (wymagane min. -35°C w klimacie Polski).',
+              'Próba szczelności układu chłodzenia: na zimnym silniku nakręć na zbiorniczek wyrównawczy adapter ręcznej pompki ciśnieniowej z manometrem, wytwórz nadciśnienie ok. 1,2 – 1,4 bar i obserwuj przez 10 minut, czy ciśnienie nie spada oraz czy na króćcach i pompie cieczy nie pojawia się wyciek.',
+              'Test na obecność spalin (CO₂) w układzie chłodzenia (weryfikacja uszkodzenia uszczelki pod głowicą – UPG): nałóż rurkę fermentacyjną z niebieskim płynem reakcyjnym na zbiorniczek wyrównawczy. Zmiana barwy płynu z niebieskiej na zieloną/żółtą oznacza przedostawanie się spalin do płaszcza wodnego!'
+            ]
+          }
+        ],
+        examTip:
+          'Jak szybko zdiagnozować uszkodzenie termostatu na egzaminie MOT.05? 1) Jeśli termostat zablokował się w pozycji ZAMKNIĘTEJ: silnik szybko się przegrzewa (ponad 110°C), a chłodnica główna i jej dolny wąż pozostają ZIMNE! 2) Jeśli termostat zablokował się w pozycji OTWARTEJ: silnik bardzo długo się nagrzewa, a podczas jazdy z dużą prędkością temperatura na wskaźniku spada poniżej 70°C.',
+        quiz: [
+          {
+            question: 'Jaki objaw wskazuje na zablokowanie się termostatu układu chłodzenia w pozycji stale zamkniętej?',
+            options: [
+              'Silnik nie może osiągnąć temperatury roboczej podczas jazdy poza miastem',
+              'Silnik szybko ulega przegrzaniu, a chłodnica główna oraz jej wąż powrotny pozostają zimne lub lekko letnie',
+              'Wentylator chłodnicy nie wyłącza się po wyjęciu kluczyka ze stacyjki',
+              'Temperatura krzepnięcia płynu spada do -50°C'
+            ],
+            correctIndex: 1,
+            explanation: 'Zablokowany zamknięty termostat nie puszcza gorącego płynu na duży obieg do chłodnicy. Cały płyn krąży tylko w małym obiegu, co skutkuje gwałtownym przegrzaniem silnika przy zimnej chłodnicy.'
+          },
+          {
+            question: 'W jakim celu układ chłodzenia silnika jest układem ciśnieniowym zamkniętym (pracującym przy nadciśnieniu ok. 1,2 – 1,5 bar)?',
+            options: [
+              'Aby podwyższyć temperaturę wrzenia płynu chłodniczego powyżej 120°C i zapobiec powstawaniu pęcherzy parowych w głowicy',
+              'Aby przyspieszyć zużycie uszczelnienia pompy cieczy chłodzącej',
+              'Aby obniżyć temperaturę zamarzania wody destylowanej do -40°C',
+              'Aby zablokować przepływ cieczy przez nagrzewnicę kabiny'
+            ],
+            correctIndex: 0,
+            explanation: 'Zgodnie z prawami fizyki wzrost ciśnienia nad powierzchnią cieczy podnosi jej temperaturę wrzenia. Dzięki nadciśnieniu utrzymywanemu przez korek zbiorniczka płyn nie wrze nawet w temperaturze 115–120°C.'
+          }
+        ]
+      },
+      {
+        id: 'uklad-klimatyzacji',
+        title: 'Układ klimatyzacji i wentylacji',
+        subtitle: 'Obieg termodynamiczny klimatyzacji (sprężarka, skraplacz, zawór rozprężny, parownik), czynniki R134a i R1234yf, oleje PAG/POE oraz diagnostyka ciśnień LP/HP.',
+        readingTime: '9 min',
+        examFrequency: 'Bardzo wysoka',
+        keywords: [
+          'klimatyzacja', 'sprężarka', 'kompresor', 'skraplacz', 'parownik', 'zawór rozprężny',
+          'osuszacz', 'r134a', 'r1234yf', 'pag', 'poe', 'ciśnienie lp', 'ciśnienie hp', 'próżnia', 'ozonowanie'
+        ],
+        summary:
+          'Układ klimatyzacji samochodowej nie „wytwarza chłodu”, lecz odbiera ciepło z powietrza wdmuchiwanego do kabiny (w parowniku) i oddaje je na zewnątrz pojazdu (w skraplaczu przed chłodnicą silnika), wykorzystując przemiany fazowe czynnika chłodniczego (parowanie pod niskim ciśnieniem i skraplanie pod wysokim ciśnieniem).',
+        interactiveTool: 'ac-pressure-simulator',
+        sections: [
+          {
+            heading: '1. Budowa obiegu chłodniczego i stany skupienia czynnika',
+            content:
+              'Obieg klimatyzacji jest podzielony na stronę WYSOKIEGO CIŚNIENIA (HP – od sprężarki do zaworu rozprężnego) oraz stronę NISKIEGO CIŚNIENIA (LP – od zaworu rozprężnego przez parownik do ssania sprężarki):',
+            table: {
+              headers: ['Element układu (w kolejności obiegu)', 'Strona ciśnienia', 'Przemiana fizyczna czynnika chłodniczego'],
+              rows: [
+                ['1. Sprężarka (kompresor klimatyzacji)', 'Granica LP -> HP', 'Zasysa zimny GAZ pod niskim ciśnieniem (~2 bar) i spręża go do gorącego GAZU pod wysokim ciśnieniem (~12–16 bar). UWAGA: sprężarka nigdy nie może zassać cieczy (ciecz jest nieściśliwa)!'],
+                ['2. Skraplacz (kondensator – przed chłodnicą)', 'Wysokie ciśnienie (HP)', 'Gorący gaz oddaje ciepło powietrzu zewnętrznemu (wspomagany wentylatorem) i SKRAPLA SIĘ, przechodząc w ciepłą CIECZ pod wysokim ciśnieniem'],
+                ['3. Filtr-osuszacz (w układach z TXV)', 'Wysokie ciśnienie (HP)', 'Wychwytuje wilgoć (higroskopijny silikażel) oraz opiłki i stanowi zbiornik buforowy ciekłego czynnika'],
+                ['4. Zawór rozprężny (TXV) lub dysza dławiąca', 'Granica HP -> LP', 'Gwałtownie dławi ciśnienie ciekłego czynnika z ~14 bar do ~2 bar, obniżając jego temperaturę do ok. 0°C'],
+                ['5. Parownik (w obudowie nagrzewnicy w kabinie)', 'Niskie ciśnienie (LP)', 'Rozprężony czynnik WRZE (odparowuje) w niskiej temperaturze, intensywnie odbierając ciepło i wilgoć z powietrza wdmuchiwanego do kabiny']
+              ]
+            }
+          },
+          {
+            heading: '2. Czynniki chłodnicze (R134a vs R1234yf) oraz oleje sprężarkowe (PAG vs POE)',
+            content:
+              'W układzie wraz z czynnikiem chłodniczym krąży specjalny olej syntetyczny smarujący elementy tłoczne sprężarki:',
+            bullets: [
+              'Czynnik R134a (tetrafluoroetan): stosowany w starszych pojazdach (współczynnik GWP = 1430), niepalny. Złączki serwisowe różnią się średnicą (HP większa, LP mniejsza).',
+              'Czynnik R1234yf (tetrafluoropropen): stosowany w nowych pojazdach (GWP = 4 – bezpieczny dla klimatu), umiarkowanie palny (klasa A2L). Posiada inne złączki serwisowe niż R134a.',
+              'Olej PAG (polialkiloglikolowy): stosowany w sprężarkach napędzanych paskiem wielorowkowym. Jest ekstremalnie HIGROSKOPIJNY – otwarta butelka chłonie wilgoć z powietrza w ciągu kilkunastu minut!',
+              'Olej POE (poliestrowy) / nieprzewodzący prądu: obowiązkowy w samochodach hybrydowych (HEV/PHEV) i elektrycznych (EV), w których sprężarka klimatyzacji jest napędzana wewnętrznym silnikiem elektrycznym wysokiego napięcia (400 V). Zastosowanie zwykłego oleju PAG w hybrydzie spowoduje przebicie izolacji uzwojeń!'
+            ]
+          },
+          {
+            heading: '3. Procedura obsługi stacją klimatyzacji i dezynfekcja parownika',
+            content:
+              'Pełny cykl serwisowy wykonywany automatyczną stacją obsługi klimatyzacji obejmuje kolejno:',
+            steps: [
+              'Odzysk i recykling: odciągnięcie starego czynnika z układu, odseparowanie zużytego oleju i zważenie ilości odzyskanego gazu.',
+              'Wytworzenie próżni (min. 20–30 minut): pompa próżniowa usuwa powietrze, a głębokie podciśnienie (~1 mbar) powoduje odparowanie i usunięcie wilgoci z układu (woda w próżni wrze w temperaturze pokojowej!).',
+              'Test szczelności podciśnieniowej (lub próba ciśnieniowa mieszanką 95% azotu N₂ + 5% wodoru H₂ z detektorem elektronicznym w razie pustego układu!).',
+              'Dozowanie świeżego oleju (tyle mililitrów, ile odseparowano + ewentualny dodatek przy wymianie podzespołu) oraz barwnika kontrastowego UV.',
+              'Napełnienie czynnikiem chłodniczym ściśle według MASY [g] podanej na tabliczce znamionowej pod maską oraz wymiana filtra kabinowego i dezynfekcja parownika (ozonowaniem lub metodą ultradźwiękową).'
+            ]
+          }
+        ],
+        examTip:
+          'Zapamiętaj rolę próżni podczas obsługi klimatyzacji na egzaminie MOT.05: długotrwałe wytwarzanie próżni (min. 20–30 min) nie służy wyłącznie do sprawdzenia szczelności, ale przede wszystkim do OSUSZENIA układu z wilgoci (w głębokiej próżni woda wrze i odparowuje już w temperaturze otoczenia 20°C)!',
+        quiz: [
+          {
+            question: 'W jakim stanie skupienia i pod jakim ciśnieniem czynnik chłodniczy powinien trafiać do króćca ssawnego sprężarki klimatyzacji?',
+            options: [
+              'W stanie ciekłym pod wysokim ciśnieniem (ok. 15 bar)',
+              'W stanie gazowym (para nasycona/przegrzana) pod niskim ciśnieniem (ok. 2 bar)',
+              'W stanie stałym (jako suchy lód) pod ciśnieniem atmosferycznym',
+              'W stanie ciekłym zmieszanym z płynem chłodniczym G12'
+            ],
+            correctIndex: 1,
+            explanation: 'Ciecze są nieściśliwe – zassanie ciekłego czynnika przez sprężarkę spowodowałoby tzw. uderzenie hydrauliczne i zniszczenie zaworów sprężarki. Do sprężarki ze strony parownika trafia wyłącznie gaz pod niskim ciśnieniem (LP).'
+          },
+          {
+            question: 'Dlaczego w samochodach hybrydowych i elektrycznych z elektryczną sprężarką klimatyzacji wysokiego napięcia nie wolno stosować standardowego oleju PAG?',
+            options: [
+              'Ponieważ olej PAG ma kolor zielony i brudzi wziernik',
+              'Ponieważ standardowy olej PAG przewodzi prąd elektryczny i obniża rezystancję izolacji uzwojeń silnika wysokiego napięcia w sprężarce (wymagany jest olej dielektryczny POE)',
+              'Ponieważ olej PAG zamarza w temperaturze +10°C',
+              'Ponieważ w samochodach elektrycznych nie stosuje się skraplacza'
+            ],
+            correctIndex: 1,
+            explanation: 'W elektrycznych sprężarkach klimatyzacji (HV) uzwojenia silnika elektrycznego mają bezpośredni kontakt z czynnikiem i olejem. Wymagany jest olej dielektryczny (nieprzewodzący prądu, np. POE), aby zapobiec zwarciu wysokiego napięcia do obudowy.'
+          }
+        ]
+      },
+      {
+        id: 'budowa-zawieszenia',
+        title: 'Układy zawieszenia',
+        subtitle: 'Podział na zawieszenia zależne, półzależne (belka skrętna) i niezależne (MacPherson, wielowahaczowe Multi-Link), pneumatyczne oraz zasady napraw.',
+        readingTime: '9 min',
+        examFrequency: 'Bardzo wysoka',
+        keywords: [
+          'zawieszenie', 'zależne', 'półzależne', 'niezależne', 'belka skrętna', 'wielowahaczowe',
+          'multi-link', 'amortyzator', 'sprężyna', 'wahacz', 'sworzeń wahacza', 'tuleja metalowo-gumowa',
+          'silentblock', 'macpherson', 'stabilizator', 'pneumatyczne', 'ściągacz do sprężyn'
         ],
         summary:
           'Układ zawieszenia łączy koła jezdne z nadwoziem pojazdu, przenosi siły napędowe, hamowania i boczne, a jednocześnie izoluje kabinę od nierówności drogi i utrzymuje stały docisk opony do nawierzchni.',
         sections: [
           {
-            heading: '1. Trzy grupy funkcyjne elementów zawieszenia',
+            heading: '1. Klasyfikacja konstrukcyjna układów zawieszenia (zależne, półzależne, niezależne)',
             content:
-              'Każde zawieszenie samochodowe składa się z trzech współpracujących ze sobą grup podzespołów:',
+              'Ze względu na kinematykę ruchu kół jednej osi zawieszenia samochodowe dzieli się na trzy główne rodzaje:',
             table: {
-              headers: ['Grupa elementów', 'Przykłady podzespołów', 'Rola w pojeździe'],
+              headers: ['Rodzaj zawieszenia', 'Budowa i zasada działania', 'Właściwości jezdne i zastosowanie'],
               rows: [
-                ['Elementy wodzące (prowadzące koło)', 'Wahacze poprzeczne i wzdłużne, sworznie kulowe, tuleje metalowo-gumowe, belka skrętna', 'Wyznaczają tor ruchu koła względem nadwozia i przenoszą siły wzdłużne oraz poprzeczne'],
-                ['Elementy sprężyste', 'Sprężyny śrubowe, resory piórowe, drążki skrętne, miechy pneumatyczne', 'Przejmują energię uderzeń kół o nierówności drogi, zamieniając ją na drgania sprężyste'],
-                ['Elementy tłumiące i stabilizujące', 'Amortyzatory hydrauliczno-gazowe, stabilizator przechyłów z łącznikami', 'Wygaszają (tłumią) drgania sprężyn i ograniczają przechyły boczne nadwozia na zakrętach']
+                ['Zawieszenie zależne (sztywne)', 'Oba koła jednej osi połączone wspólną sztywną belką lub sztywnym mostem napędowym (często z resorami piórowymi)', 'Najedziecie jednego koła na przeszkodę wymusza pochylenie drugiego koła tej samej osi. Duża masa nieresorowana – samochody ciężarowe, dostawcze i terenowe'],
+                ['Zawieszenie półzależne (belka skrętna)', 'Dwa wahacze wleczone połączone poprzeczną belką podatną na skręcanie (kształt litery H)', 'Kompromis między ceną, prostotą a prowadzeniem. Belka pełni jednocześnie rolę stabilizatora przechyłów – tylna oś aut miejskich i kompaktowych (segment B i C)'],
+                ['Zawieszenie niezależne: Kolumna MacPhersona', 'Dolny wahacz poprzeczny ze sworzniem kulowym + kolumna amortyzatora ze sprężyną śrubową i górnym łożyskiem oporowym', 'Ruch pionowy jednego koła nie wpływa na położenie drugiego koła. Zwarta budowa zostawiająca dużo miejsca na poprzecznie umieszczony silnik i półosie napędowe'],
+                ['Zawieszenie niezależne: Wielowahaczowe (Multi-Link) i dwuwahaczowe', 'Zwrotnica prowadzona przez 4 lub 5 oddzielnych wahaczy (wzdłużnych, poprzecznych i skośnych) lub dwa trójkątne wahacze poprzeczne', 'Najwyższa precyzja prowadzenia koła w zakręcie i możliwość niezależnej regulacji kątów geometrii (Camber i Toe) także na tylnej osi – auta klasy średniej, wyższej i sportowe'],
+                ['Zawieszenie pneumatyczne / adaptacyjne', 'Zamiast stalowych sprężyn zastosowano gumowe miechy powietrzne zasilane z kompresora przez blok zaworowy + amortyzatory o zmiennym tłumieniu (CDC/DCC)', 'Automatyczne poziomowanie prześwitu niezależnie od załadunku (np. tylna oś kombi/SUV) oraz możliwość regulacji wysokości nadwozia i twardości zawieszenia']
               ]
             }
           },
           {
-            heading: '2. Kolumna zawieszenia typu MacPherson',
+            heading: '2. Trzy grupy funkcyjne elementów zawieszenia (wodzące, sprężyste, tłumiące)',
             content:
-              'Najpopularniejsze rozwiązanie przedniego zawieszenia niezależnego w samochodach osobowych i dostawczych:',
+              'Niezależnie od typu konstrukcyjnego każde zawieszenie składa się z trzech współpracujących grup podzespołów:',
             bullets: [
-              'Zwrotnica koła jest połączona na dole ze sworzniem wahacza poprzecznego, a od góry z kolumną amortyzatora, na której osadzona jest sprężyna śrubowa.',
-              'Kolumna amortyzatora pełni jednocześnie funkcję elementu tłumiącego oraz górnego elementu wodzącego koło (stanowi oś skrętu zwrotnicy!).',
-              'W górnym mocowaniu kolumny znajduje się poduszka gumowa z łożyskiem oporowym (łożyskiem MacPhersona). Zatarcie tego łożyska objawia się przeskakiwaniem sprężyny i metalicznym „brzdękaniem” podczas skręcania kół na postoju.'
+              'Elementy wodzące (prowadzące koło): wahacze poprzeczne i wzdłużne, sworznie kulowe zwrotnicy, tuleje metalowo-gumowe (silentblocki). Wyznaczają tor ruchu koła i przenoszą siły wzdłużne oraz boczne na podłużnice/sanki nadwozia.',
+              'Elementy sprężyste: sprężyny śrubowe (o charakterystyce liniowej lub progresywnej), resory piórowe, drążki skrętne, miechy pneumatyczne. Przejmują energię uderzeń kół o nierówności.',
+              'Elementy tłumiące i stabilizujące: amortyzatory teleskopowe (dwururowe olejowo-gazowe lub jednorurowe wysokociśnieniowe) wygaszające drgania sprężyn oraz drążek stabilizatora poprzecznego z łącznikami ograniczający przechyły boczne nadwozia w zakręcie.'
             ]
           },
           {
-            heading: '3. Złote zasady bezpieczeństwa podczas naprawy zawieszenia',
+            heading: '3. Złote zasady bezpieczeństwa i technologii naprawy zawieszenia',
             content:
-              'Podczas wymiany wahaczy, sprężyn lub amortyzatorów obowiązują dwie krytyczne reguły technologiczne:',
+              'Podczas wymiany wahaczy, sprężyn lub amortyzatorów obowiązują krytyczne reguły technologiczne:',
             steps: [
               'DEMONTAŻ KOLUMNY MACPHERSONA: przed odkręceniem centralnej nakrętki tłoczyska amortyzatora BEZWZGLĘDNIE ściśnij sprężynę śrubową za pomocą atestowanego ściągacza do sprężyn. Napięta sprężyna magazynuje ogromną energię potencjalną!',
-              'DOKRĘCANIE TULEI METALOWO-GUMOWYCH (SILENTBLOCKÓW): śruby przechodzące przez tuleje metalowo-gumowe wahaczy oraz tylnej belki dokręcamy momentem znamionowym DOPIERO PO OPUSZCZENIU POJAZDU NA KOŁA (lub po podparciu zwrotnicy w położeniu odpowiadającym normalnemu obciążeniu statycznemu).',
-              'Dokręcenie tulei na wiszących kołach powoduje jej trwałe skręcenie już po opuszczeniu auta z podnośnika i szybkie zerwanie gumy!'
+              'DOKRĘCANIE TULEI METALOWO-GUMOWYCH (SILENTBLOCKÓW): śruby przechodzące przez tuleje metalowo-gumowe wahaczy oraz tylnej belki dokręcamy momentem znamionowym DOPIERO PO OPUSZCZENIU POJAZDU NA KOŁA (w położeniu odpowiadającym normalnemu obciążeniu statycznemu). Dokręcenie tulei na wiszących kołach powoduje trwałe skręcenie i szybkie zerwanie gumy!',
+              'Po każdej wymianie elementów wodzących (wahacza, sworznia, kolumny amortyzatora) lub rozpięciu drążków kierowniczych należy obowiązkowo skontrolować i wyregulować geometrię kół jezdnych.'
             ]
           }
         ],
@@ -885,94 +1355,96 @@ export const CATEGORIES = [
             explanation: 'Dokręcenie śrub tulei metalowo-gumowych na opuszczonym pojeździe gwarantuje, że w pozycji spoczynkowej guma tulei nie jest wstępnie naprężona skrętnie i pracuje symetrycznie w obie strony.'
           },
           {
-            question: 'Jakie specjalistyczne narzędzie jest niezbędne do bezpiecznego oddzielenia sprężyny śrubowej od amortyzatora w kolumnie MacPhersona?',
+            question: 'Który typ zawieszenia tylnej osi składa się z dwóch wahaczy wleczonych połączonych poprzeczką odkształcalną skrętnie i należy do grupy zawieszeń półzależnych?',
             options: [
-              'Ściągacz trójramienny do łożysk tocznych',
-              'Ściągacz do sprężyn zawieszenia (śrubowy lub stacjonarny hydrauliczny)',
-              'Prasa do zarabiania przewodów hamulcowych',
-              'Klucz hakowy do nakrętek łożyskowych'
+              'Sztywny most napędowy na resorach piórowych',
+              'Zawieszenie z belką skrętną',
+              'Zawieszenie pięciowahaczowe Multi-Link',
+              'Zawieszenie hydropneumatyczne ze sferami gazowymi'
             ],
             correctIndex: 1,
-            explanation: 'Sprężyna w kolumnie MacPhersona znajduje się pod dużym napięciem wstępnym. Odkręcenie nakrętki górnego talerzyka bez ściśnięcia zwojów ściągaczem grozi wystrzeleniem sprężyny i ciężkim wypadkiem.'
+            explanation: 'Belka skrętna łączy cechy zawieszenia zależnego i niezależnego (stąd nazwa: półzależne) – poprzeczka łącząca wahacze wleczone poddaje się skręcaniu, zastępując jednocześnie drążek stabilizatora.'
           }
         ]
       },
       {
         id: 'uklad-hamulcowy',
-        title: 'Układ hamulcowy',
-        subtitle: 'Budowa hydraulicznego układu hamulcowego, pomiary bicia i grubości tarcz, właściwości płynów hamulcowych (DOT 3, DOT 4, DOT 5.1) oraz system ABS.',
-        readingTime: '8 min',
+        title: 'Układy hamulcowe i systemy ABS/ESP',
+        subtitle: 'Rodzaje hamulców (tarczowe ze stałym i pływającym zaciskiem, bębnowe Simplex/Duplex), układy dwuobwodowe X i TT, serwo, płyny DOT i systemy ABS/ASR/ESP.',
+        readingTime: '10 min',
         examFrequency: 'Bardzo wysoka',
         keywords: [
-          'hamulce', 'tarcza hamulcowa', 'klocki', 'zacisk', 'płyn hamulcowy', 'dot4',
-          'higroskopijny', 'temperatura wrzenia', 'odpowietrzanie', 'bicie tarczy', 'czujnik zegarowy', 'abs'
+          'hamulce', 'tarcza hamulcowa', 'klocki', 'zacisk pływający', 'zacisk stały', 'bębnowy',
+          'simplex', 'serwo', 'pompa tandem', 'płyn hamulcowy', 'dot4', 'higroskopijny',
+          'odpowietrzanie', 'bicie tarczy', 'abs', 'esp', 'asr', 'epb'
         ],
         summary:
           'Hydrauliczny układ hamulcowy wykorzystuje prawo Pascala (ciśnienie wywierane na płyn w układzie zamkniętym rozchodzi się jednakowo we wszystkich kierunkach) oraz zjawisko tarcia do zamiany energii kinetycznej jadącego pojazdu w energię cieplną.',
         sections: [
           {
-            heading: '1. Właściwości płynu hamulcowego i kryteria jego wymiany',
+            heading: '1. Rodzaje mechanizmów hamulcowych i podział obwodów hydraulicznych',
             content:
-              'Płyny hamulcowe glikolowe (DOT 3, DOT 4, DOT 4 LV, DOT 5.1) są silnie HIGROSKOPIJNE – chłoną wilgoć z powietrza atmosferycznego przez mikropory przewodów elastycznych i odpowietrznik zbiorniczka:',
+              'Ze względów bezpieczeństwa każdy samochód posiada dwuobwodowy układ hydrauliczny zasilany dwusekcyjną pompą hamulcową (typu Tandem) wspomaganą podciśnieniowym urządzeniem Serwo:',
             table: {
-              headers: ['Klasa płynu', 'Baza chemiczna', 'Min. temp. wrzenia suchego (ERBP)', 'Min. temp. wrzenia zawodnionego (Wet ERBP)'],
+              headers: ['Rozwiązanie konstrukcyjne', 'Budowa i zasada działania', 'Zalety i zastosowanie'],
               rows: [
-                ['DOT 3', 'Glikolowa', '≥ 205°C', '≥ 140°C'],
-                ['DOT 4', 'Glikolowo-boranowa', '≥ 230°C', '≥ 155°C'],
-                ['DOT 5.1', 'Glikolowa (niska lepkość dla ESP/ABS)', '≥ 260°C', '≥ 180°C'],
-                ['DOT 5 (uwaga!)', 'Silikonowa (NIEMIESZALNA z DOT 3/4/5.1!)', '≥ 260°C', '≥ 180°C (niehigroskopijny)']
+                ['Hamulec tarczowy z zaciskiem pływającym (przesuwnym)', 'Tłoczek znajduje się tylko po wewnętrznej stronie tarczy. Obudowa zacisku przesuwa się na sworzniach prowadzących jarzma, dociskając zewnętrzny klocek siłą reakcji', 'Najpopularniejsze rozwiązanie! Mała szerokość zewnętrzna, mniejsze ryzyko przegrzania płynu. Wymaga regularnego czyszczenia i smarowania prowadnic jarzma'],
+                ['Hamulec tarczowy z zaciskiem stałym (wielotłoczkowym)', 'Nieruchomy korpus zacisku przykręcony na sztywno do zwrotnicy, wyposażony w parzystą liczbę tłoczków (2, 4, 6 lub 8) po obu stronach tarczy', 'Bardzo wysoka sztywność i równomierny docisk klocków o dużej powierzchni – samochody sportowe, ciężkie SUV-y i auta klasy wyższej'],
+                ['Hamulec bębnowy (Simplex / Duplex)', 'Rozpieracz hydrauliczny (cylinderek) lub mechaniczny dociska wewnętrzne szczęki z okładzinami do wirującego bębna. Szczęka współbieżna wykazuje zjawisko samowzmacniania', 'Duża skuteczność hamulca postojowego i dobra osłona przed błotem, ale słabe odprowadzanie ciepła (zjawisko fadingu) – tylna oś aut miejskich i dostawczych'],
+                ['Podział obwodów: Układ X (diagonalny / przekątny)', 'Sekcja I pompy zasila koło Lewe Przednie + Prawe Tylne, a Sekcja II zasila koło Prawe Przednie + Lewe Tylne', 'W razie rozszczelnienia jednego obwodu zachowane jest zawsze 50% całkowitej siły hamowania (po jednym kole przednim i jednym tylnym) – standard w autach z napędem FWD'],
+                ['Podział obwodów: Układ TT (przód / tył)', 'Sekcja I pompy zasila oba koła przednie, a Sekcja II oba koła tylne', 'Stosowany głównie w autach z napędem na tył (RWD) oraz ciężarowych i terenowych']
               ]
-            },
-            bullets: [
-              'Kryterium wymiany płynu hamulcowego: zawartość wody przekraczająca 1,5% – 2,0% lub spadek temperatury wrzenia poniżej 180°C (dla DOT 4), bądź interwał czasowy co 2 lata.',
-              'Skutek wrzenia zawodnionego płynu podczas długotrwałego hamowania: powstanie korka parowego (pęcherzyków pary wodnej, które są ściśliwe) i wpadnięcie pedału hamulca w podłogę!'
-            ]
+            }
           },
           {
-            heading: '2. Weryfikacja tarcz i klocków hamulcowych (pomiary warsztatowe)',
+            heading: '2. Właściwości płynu hamulcowego i elektroniczne systemy czynnego bezpieczeństwa',
             content:
-              'Podczas obsługi układu hamulcowego wykonuje się trzy podstawowe pomiary kontrolne:',
-            bullets: [
-              'Grubość tarczy hamulcowej (TH / Min TH): mierzona mikrometrem lub suwmiarką do tarcz w kilku punktach na obwodzie (z pominięciem zewnętrznego rantu korozyjnego!). Dopuszczalne zużycie tarczy to zazwyczaj ok. 2,0 mm (po 1 mm na stronę) względem wymiaru nominalnego.',
-              'Bicie boczne tarczy hamulcowej: mierzone czujnikiem zegarowym na statywie magnetycznym w odległości ok. 5–10 mm od zewnętrznej krawędzi tarczy. Maksymalne dopuszczalne bicie boczne nowej tarczy wynosi zazwyczaj 0,05 mm (5 setnych milimetra). Nadmierne bicie powoduje pulsowanie pedału i drgania kierownicy przy hamowaniu.',
-              'Grubość okładziny ciernej klocka hamulcowego: minimalna dopuszczalna grubość samej warstwy ciernej (bez płytki stalowej nośnej) wynosi zazwyczaj 1,5 – 2,0 mm.'
-            ]
+              'Płyny glikolowe (DOT 3, DOT 4, DOT 5.1) są silnie HIGROSKOPIJNE (chłoną wilgoć z otoczenia), a ich niską lepkość w ujemnych temperaturach wykorzystują układy aktywne:',
+            table: {
+              headers: ['Klasa płynu / System', 'Parametry / Działanie w pojeździe', 'Kryteria serwisowe i diagnostyczne'],
+              rows: [
+                ['DOT 4 / DOT 4 LV (Class 6)', 'Min. temp. wrzenia suchego ≥ 230°C, zawodnionego ≥ 155°C (baza glikolowo-boranowa)', 'Wymiana co 2 lata lub gdy zawartość wody przekroczy 1,5–2,0% (temp. wrzenia < 180°C)'],
+                ['DOT 5.1 vs DOT 5', 'DOT 5.1 (glikolowy, mieszalny z DOT 4, wrzenie ≥ 260°C) | DOT 5 (SILIKONOWY – całkowicie NIEMIESZALNY z DOT 3/4/5.1!)', 'Nigdy nie wlewaj silikonowego płynu DOT 5 do klasycznego układu hamulcowego!'],
+                ['ABS + EBD + BAS', 'ABS zapobiega blokowaniu kół przy hamowaniu (zachowuje sterowność!), EBD rozdziela siłę hamowania przód/tył, BAS zwiększa ciśnienie przy nagłym uderzeniu w pedał', 'W razie usterki czujnika prędkości koła zapala się kontrolka ABS, ale klasyczne hamulce hydrauliczne nadal działają!'],
+                ['ASR (TCS) + ESP (ESC)', 'ASR zapobiega buksowaniu kół napędzanych przy ruszaniu, a ESP stabilizuje tor jazdy (niweluje podsterowność i nadsterowność) poprzez przyhamowywanie pojedynczych kół', 'Układ ESP wykorzystuje czujnik kąta skrętu kierownicy oraz czujnik prędkości kątowej (żyroskop) i przyspieszenia bocznego']
+              ]
+            }
           },
           {
-            heading: '3. Odpowietrzanie układu hamulcowego i cofanie tłoczków',
+            heading: '3. Weryfikacja tarcz, odpowietrzanie układu i obsługa zacisków tylnych / EPB',
             content:
-              'Powietrze w układzie hydraulicznym objawia się „miękkim, gąbczastym” pedałem hamulca, który twardnieje dopiero po kilkukrotnym naciśnięciu:',
+              'Podczas obsługi warsztatowej układu hamulcowego należy bezwzględnie przestrzegać procedur pomiarowych i montażowych:',
             steps: [
-              'W układach klasycznych bez użycia testera diagnostycznego odpowietrzanie rozpoczynamy od koła NAJDALEJ położonego od pompy hamulcowej (zwykle: prawy tył -> lewy tył -> prawy przód -> lewy przód), kontrolując poziom płynu w zbiorniczku.',
-              'W zaciskach tylnych z zintegrowanym mechanizmem ręcznego hamulca postojowego tłoczek należy COFAĆ JEDNOCZEŚNIE GO WKRĘCAJĄC za pomocą praski śrubowej (wciskanie młotkiem lub dźwignią uszkodzi samoregulator!).',
-              'W pojazdach z elektrycznym hamulcem postojowym (EPB) przed wymianą tylnych klocków należy wprowadzić zaciski w tryb serwisowy (wymiany klocków) za pomocą testera diagnostycznego OBD.'
+              'Pomiar grubości (Min TH) i bicia bocznego tarczy: grubość tarczy mierzymy mikrometrem (dopuszczalne zużycie zwykle ok. 2 mm względem nominału), a bicie boczne czujnikiem zegarowym na oczyszczonej piaście (max. 0,05 mm). Minimalna grubość okładziny klocka to 1,5 – 2,0 mm.',
+              'Cofanie tłoczków tylnych zacisków: w zaciskach z mechanicznym hamulcem ręcznym tłoczek cofamy JEDNOCZEŚNIE GO WKRĘCAJĄC praską śrubową. W zaciskach z elektrycznym hamulcem postojowym (EPB – silniczki elektryczne na zaciskach) przed demontażem wprowadzamy układ w „Tryb serwisowy wymiany klocków” za pomocą testera diagnostycznego OBD.',
+              'Odpowietrzanie układu hamulcowego: metodą klasyczną zaczynamy od koła NAJDALEJ położonego od pompy hamulcowej (PT -> LT -> PP -> LP). W przypadku zapowietrzenia agregatu hydraulicznego ABS/ESP konieczne jest uruchomienie procedury odpowietrzania pompy ABS testerem diagnostycznym.'
             ]
           }
         ],
         examTip:
-          'Przed zamontowaniem nowej tarczy hamulcowej bezwzględnie oczyść szczotką drucianą przylgnię piasty koła do czystego metalu i sprawdź czujnikiem zegarowym bicie boczne (max. 0,05 mm). Nieoczyszczona z rdzy piasta to najczęstsza przyczyna bicia nowych tarcz!',
+          'Jak sprawdzić na egzaminie MOT.05 działanie podciśnieniowego urządzenia wspomagającego (Serwo)? Na wyłączonym silniku naciśnij kilkukrotnie pedał hamulca (aż stanie się twardy), przytrzymaj go wciśniętego i uruchom silnik – jeśli serwo jest sprawne, pedał hamulca odczuwalnie opadnie (miękko przesunie się w dół) o kilka centymetrów!',
         quiz: [
           {
-            question: 'Co oznacza określenie, że płyn hamulcowy DOT 4 jest cieczą higroskopijną?',
+            question: 'W jaki sposób sprawdza się poprawność działania podciśnieniowego urządzenia wspomagającego układ hamulcowy (tzw. serwa) bez demontażu z pojazdu?',
             options: [
-              'Że nie zamarza w temperaturze do -50°C',
-              'Że posiada właściwości smarne dla łożysk tocznych',
-              'Że chłonie wilgoć (wodę) z otaczającego powietrza, co obniża jego temperaturę wrzenia',
-              'Że po podgrzaniu zwiększa swoją lepkość dwukrotnie'
+              'Po kilkukrotnym naciśnięciu pedału hamulca na wyłączonym silniku przytrzymujemy wciśnięty pedał i uruchamiamy silnik – sprawny układ spowoduje wyczuwalne opadnięcie pedału',
+              'Mierzymy refraktometrem gęstość powietrza w kolektorze wylotowym',
+              'Odkręcamy odpowietrznik prawego przedniego koła podczas jazdy z prędkością 50 km/h',
+              'Sprawdzamy omomierzem rezystancję tarczy hamulcowej względem opony'
             ],
-            correctIndex: 2,
-            explanation: 'Higroskopijność to zdolność wchłaniania pary wodnej z otoczenia. Zawartość zaledwie 3% wody w płynie DOT 4 obniża jego temperaturę wrzenia z ok. 230°C do ok. 155°C.'
+            correctIndex: 0,
+            explanation: 'Wielokrotne naciśnięcie pedału na zgaszonym silniku wyrównuje ciśnienie w obu komorach serwa (pedał twardnieje). Po uruchomieniu silnika wytworzone podciśnienie odciąga przeponę serwa i pedał lekko opada.'
           },
           {
-            question: 'Jakim przyrządem mierzy się bicie boczne zamontowanej tarczy hamulcowej?',
+            question: 'Które koła są połączone we wspólny obwód hydrauliczny w dwuobwodowym układzie hamulcowym o podziale diagonalnym (typu X)?',
             options: [
-              'Szczelinomierzem listkowym',
-              'Czujnikiem zegarowym zamocowanym na statywie magnetycznym',
-              'Areometrem pływakowym',
-              'Kluczem dynamometrycznym z kątomierzem'
+              'Oba koła przednie w jednym obwodzie, a oba koła tylne w drugim obwodzie',
+              'Koło przednie lewe z kołem tylnym prawym w pierwszym obwodzie oraz koło przednie prawe z kołem tylnym lewym w drugim obwodzie',
+              'Wszystkie cztery koła w jednym wspólnym obwodzie szeregowym',
+              'Oba koła lewe w jednym obwodzie, a oba koła prawe w drugim obwodzie'
             ],
             correctIndex: 1,
-            explanation: 'Bicie boczne tarczy mierzy się czujnikiem zegarowym o dokładności 0,01 mm podczas pełnego obrotu piasty. Wartość graniczna to zwykle 0,05 mm.'
+            explanation: 'Podział diagonalny (krzyżowy X) łączy koła po przekątnej pojazdu (LP+PT oraz PP+LT), dzięki czemu przy awarii jednego obwodu drugie przednie koło nadal zapewnia skuteczne hamowanie bez obrócenia auta.'
           }
         ]
       }

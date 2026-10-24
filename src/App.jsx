@@ -26,7 +26,9 @@ import {
   ThreadCalculator,
   OhmCalculator,
   BatteryChecker,
-  ObdDecoder
+  ObdDecoder,
+  AcPressureSimulator,
+  NtcAndCanSimulator
 } from './components/InteractiveTools';
 
 const CATEGORY_ICONS = {
@@ -235,6 +237,10 @@ export default function App() {
         return <BatteryChecker />;
       case 'obd-decoder':
         return <ObdDecoder />;
+      case 'ac-pressure-simulator':
+        return <AcPressureSimulator />;
+      case 'ntc-can-simulator':
+        return <NtcAndCanSimulator />;
       default:
         return null;
     }
@@ -522,7 +528,7 @@ export default function App() {
                 </span>
               </div>
               <span className="text-[11px] font-mono text-slate-400">
-                5 działów / 15 tematów
+                {CATEGORIES.length} działów / {allTopicsFlat.length} tematów
               </span>
             </div>
 

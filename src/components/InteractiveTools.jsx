@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, Wrench, Cpu, BatteryCharging } from 'lucide-react';
+import { Calculator, Wrench, Cpu, BatteryCharging, Thermometer, Gauge } from 'lucide-react';
 
 export function ThreadCalculator() {
   const [diameter, setDiameter] = useState('10');
@@ -486,3 +486,248 @@ export function ObdDecoder() {
     </div>
   );
 }
+
+export function AcPressureSimulator() {
+  const [scenario, setScenario] = useState('normal');
+
+  const scenarios = {
+    normal: {
+      label: 'Układ sprawny (20–25°C)',
+      lp: '1,8 – 2,3 bar',
+      hp: '11,0 – 15,0 bar',
+      status: 'Prawidłowa praca obiegu chłodniczego',
+      color: 'text-emerald-400',
+      diagnosis:
+        'Ciśnienie niskie (LP) i wysokie (HP) w normie. Sprężarka tłoczy prawidłowo, zawór rozprężny dławi czynnik, a wentylator skraplacza odbiera ciepło.'
+    },
+    low_gas: {
+      label: 'Zbyt mało czynnika',
+      lp: '0,6 – 1,1 bar (Za niskie)',
+      hp: '6,0 – 8,5 bar (Za niskie)',
+      status: 'Niedobór czynnika chłodniczego w układzie',
+      color: 'text-orange-400',
+      diagnosis:
+        'Oba ciśnienia (LP i HP) są wyraźnie zaniżone. Słaba wydajność chłodzenia z nawiewów. Wymagany odzysk, próba szczelności (azotem/wodorem lub UV) i napełnienie wagowe.'
+    },
+    fan_fail: {
+      label: 'Brak chłodzenia skraplacza',
+      lp: '2,8 – 3,5 bar (Za wysokie)',
+      hp: '22,0 – 28,0 bar (Krytycznie wysokie!)',
+      status: 'Przegrzanie skraplacza / nadmierne ciśnienie HP',
+      color: 'text-red-400',
+      diagnosis:
+        'Gwałtowny wzrost ciśnienia HP powyżej 20 bar! Przyczyna: niedziałający wentylator skraplacza, zabrudzone lamele chłodnicy klimatyzacji lub przepełnienie układu czynnikiem.'
+    },
+    clogged_txv: {
+      label: 'Zatkany zawór rozprężny / osuszacz',
+      lp: '< 0,2 bar (Podciśnienie!)',
+      hp: '7,0 – 16,0 bar',
+      status: 'Brak przepływu przez element dławiący (zator)',
+      color: 'text-amber-400',
+      diagnosis:
+        'Strona LP schodzi w podciśnienie (poniżej 0 bar), ponieważ sprężarka wysysa czynnik z parownika, a zatkany lub oblodzony zawór rozprężny (TXV) nie dopuszcza nowej porcji cieczy.'
+    },
+    bad_comp: {
+      label: 'Uszkodzona sprężarka / zawór sterujący',
+      lp: '4,5 – 5,5 bar (Za wysokie)',
+      hp: '5,0 – 6,5 bar (Za niskie)',
+      status: 'Brak tłoczenia (ciśnienia LP i HP niemal równe)',
+      color: 'text-red-400',
+      diagnosis:
+        'Ciśnienie LP jest zbyt wysokie, a HP zbyt niskie (zbliżone do ciśnienia statycznego ~5–6 bar). Uszkodzony elektrozawór sterujący pojemnością sprężarki, zerwane sprzęgło zrywalne lub zużyte płytki zaworowe.'
+    }
+  };
+
+  const current = scenarios[scenario];
+
+  return (
+    <div className="bg-slate-900 text-slate-100 rounded-lg border border-slate-700 p-5 my-6">
+      <div className="flex items-center gap-2.5 pb-3 mb-4 border-b border-slate-800">
+        <Gauge className="w-5 h-5 text-orange-400 shrink-0" />
+        <div>
+          <h4 className="font-semibold text-sm uppercase tracking-wider text-orange-400">
+            Symulator Manometrów Stacji Klimatyzacji (LP / HP)
+          </h4>
+          <p className="text-xs text-slate-400">
+            Wybierz scenariusz pomiarowy na pracującym silniku i odczytaj interpretację ciśnień
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        {Object.entries(scenarios).map(([key, item]) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => setScenario(key)}
+            className={`px-2.5 py-1.5 text-xs rounded border cursor-pointer ${
+              scenario === key
+                ? 'bg-orange-500 text-white border-orange-500 font-semibold'
+                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+            }`}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <div className="md:col-span-5 grid grid-cols-2 gap-3">
+          <div className="bg-sky-950/60 border border-sky-700/70 rounded-lg p-3 text-center">
+            <div className="text-[11px] font-mono uppercase text-sky-300">
+              Manometr LP (Niebieski)
+            </div>
+            <div className="text-base sm:text-lg font-mono font-bold text-sky-400 mt-1">
+              {current.lp}
+            </div>
+            <div className="text-[10px] text-slate-400 mt-0.5">Strona ssawna (niskie)</div>
+          </div>
+
+          <div className="bg-red-950/50 border border-red-700/70 rounded-lg p-3 text-center">
+            <div className="text-[11px] font-mono uppercase text-red-300">
+              Manometr HP (Czerwony)
+            </div>
+            <div className="text-base sm:text-lg font-mono font-bold text-red-400 mt-1">
+              {current.hp}
+            </div>
+            <div className="text-[10px] text-slate-400 mt-0.5">Strona tłoczna (wysokie)</div>
+          </div>
+        </div>
+
+        <div className="md:col-span-7 bg-slate-800/80 border border-slate-700 rounded-lg p-3.5 space-y-1.5">
+          <div className={`text-xs font-bold uppercase ${current.color}`}>
+            {current.status}
+          </div>
+          <p className="text-xs text-slate-300 leading-relaxed">{current.diagnosis}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function NtcAndCanSimulator() {
+  const [tempC, setTempC] = useState(20);
+  const [canState, setCanState] = useState('ok');
+
+  // Approximate automotive NTC curve (e.g. Bosch ECT sensor)
+  const getNtcValues = (t) => {
+    if (t <= -20) return { r: '15 000 Ω (15 kΩ)', u: '4,55 V' };
+    if (t <= 0) return { r: '5 800 Ω (5,8 kΩ)', u: '3,85 V' };
+    if (t <= 20) return { r: '2 500 Ω (2,5 kΩ)', u: '2,80 V' };
+    if (t <= 40) return { r: '1 180 Ω (1,18 kΩ)', u: '1,85 V' };
+    if (t <= 60) return { r: '600 Ω (0,6 kΩ)', u: '1,15 V' };
+    if (t <= 80) return { r: '320 Ω (0,32 kΩ)', u: '0,68 V' };
+    return { r: '185 Ω (0,19 kΩ)', u: '0,42 V' };
+  };
+
+  const ntc = getNtcValues(tempC);
+
+  const canStates = {
+    ok: {
+      title: 'Sprawna magistrala CAN (2 × 120 Ω równolegle)',
+      ohm: '60 Ω',
+      desc: 'Oba rezystory terminujące (120 Ω w ECU i 120 Ω w liczniku/BCM) są połączone równolegle: Rz = 120 / 2 = 60 Ω.'
+    },
+    open_one: {
+      title: 'Przerwa w jednym terminatorze / odpięty sterownik końcowy',
+      ohm: '120 Ω',
+      desc: 'W obwodzie pozostał tylko jeden rezystor terminujący 120 Ω. Drugi moduł końcowy jest odłączony lub ma przerwaną wiązkę.'
+    },
+    short: {
+      title: 'Zwarcie linii CAN-High z linią CAN-Low',
+      ohm: '0,2 – 1,5 Ω',
+      desc: 'Przewody skrętki CAN-H i CAN-L są zwarte ze sobą. Komunikacja w całej gałęzi sieci jest całkowicie zablokowana (błędy U0xxx).'
+    }
+  };
+
+  return (
+    <div className="bg-slate-900 text-slate-100 rounded-lg border border-slate-700 p-5 my-6">
+      <div className="flex items-center gap-2.5 pb-3 mb-4 border-b border-slate-800">
+        <Thermometer className="w-5 h-5 text-orange-400 shrink-0" />
+        <div>
+          <h4 className="font-semibold text-sm uppercase tracking-wider text-orange-400">
+            Symulator Czujnika NTC (ECT) oraz Pomiaru Magistrali CAN
+          </h4>
+          <p className="text-xs text-slate-400">
+            Sprawdź charakterystykę termistora NTC i rezystancję terminacji CAN-BUS (piny 6 i 14 OBD)
+          </p>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-3">
+          <div className="flex justify-between text-xs">
+            <span className="text-slate-300">Temperatura płynu chłodzącego (NTC):</span>
+            <span className="font-mono font-bold text-orange-400">{tempC} °C</span>
+          </div>
+          <input
+            type="range"
+            min="-20"
+            max="100"
+            step="20"
+            value={tempC}
+            onChange={(e) => setTempC(parseInt(e.target.value, 10))}
+            className="w-full accent-orange-500 cursor-pointer"
+          />
+          <div className="grid grid-cols-2 gap-2.5">
+            <div className="bg-slate-800 p-2.5 rounded border border-slate-700">
+              <div className="text-[11px] text-slate-400">Rezystancja czujnika NTC:</div>
+              <div className="text-sm font-mono font-bold text-sky-400 mt-0.5">
+                {ntc.r}
+              </div>
+            </div>
+            <div className="bg-slate-800 p-2.5 rounded border border-slate-700">
+              <div className="text-[11px] text-slate-400">Napięcie na wtyczce (z ECU):</div>
+              <div className="text-sm font-mono font-bold text-emerald-400 mt-0.5">
+                {ntc.u}
+              </div>
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-400">
+            Zasada NTC: wraz ze wzrostem temperatury rezystancja oraz napięcie sygnałowe <strong>maleją</strong>.
+          </p>
+        </div>
+
+        <div className="space-y-3 border-t md:border-t-0 md:border-l border-slate-800 pt-4 md:pt-0 md:pl-6">
+          <div className="text-xs text-slate-300 font-medium">
+            Pomiar omomierzem między CAN-H (pin 6) a CAN-L (pin 14):
+          </div>
+          <div className="flex gap-1.5">
+            {[
+              { id: 'ok', label: '60 Ω (Sprawna)' },
+              { id: 'open_one', label: '120 Ω (Przerwa)' },
+              { id: 'short', label: '~0 Ω (Zwarcie)' }
+            ].map((b) => (
+              <button
+                key={b.id}
+                type="button"
+                onClick={() => setCanState(b.id)}
+                className={`flex-1 py-1.5 px-2 text-xs font-mono rounded border cursor-pointer ${
+                  canState === b.id
+                    ? 'bg-sky-600 text-white border-sky-500 font-semibold'
+                    : 'bg-slate-800 text-slate-300 border-slate-700'
+                }`}
+              >
+                {b.label}
+              </button>
+            ))}
+          </div>
+          <div className="bg-slate-800 p-3 rounded border border-slate-700 space-y-1">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-semibold text-white">
+                {canStates[canState].title}
+              </span>
+              <span className="font-mono font-bold text-orange-400 text-sm">
+                {canStates[canState].ohm}
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              {canStates[canState].desc}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
